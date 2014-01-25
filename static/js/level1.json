@@ -1,0 +1,28 @@
+{
+
+  "nodes" : [
+    {
+      "Name" : "test",
+      "position": {
+        "x" : 50,
+        "y" : 5
+      },
+      "size" : 5
+    },
+    {
+      "Name" : "test2",
+      "position": {
+        "x" : 250,
+        "y" : 5
+      },
+      "size" : 5
+    }
+  ],
+  "edges" : [
+    {
+      "source" : 0,
+      "target" : 1
+    }
+  ]
+}
+

@@ -10,7 +10,7 @@ var gDrawingContext;
 var gPattern;
 
 var gPiece;
-
+var levelLayout;
 function Cell(row, column) {
     this.row = row;
     this.column = column;
@@ -67,24 +67,16 @@ function drawBoard() {
 
     gDrawingContext.beginPath();
     
-    /* vertical lines */
-    for (var x = 0; x <= kPixelWidth; x += kPieceWidth) {
-	gDrawingContext.moveTo(0.5 + x, 0);
-	gDrawingContext.lineTo(0.5 + x, kPixelHeight);
+    for (var index in levelLayout.nodes) {
+	var curNode = levelLayout.nodes[index];
+	gDrawingContext.beginPath();
+	gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.size, 0, Math.PI*2, false);
+	gDrawingContext.closePath();
     }
-    
-    /* horizontal lines */
-    for (var y = 0; y <= kPixelHeight; y += kPieceHeight) {
-	gDrawingContext.moveTo(0, 0.5 + y);
-	gDrawingContext.lineTo(kPixelWidth, 0.5 +  y);
-    }
-    
-    /* draw it! */
-    gDrawingContext.strokeStyle = "#ccc";
+    gDrawingContext.strokeStyle = "#000";
     gDrawingContext.stroke();
     
-	drawPiece(gPiece, false);
-
+    
 
 }
 
@@ -106,7 +98,7 @@ function drawPiece(p, selected) {
 }
 
 function newGame() {
-    gPiece = new Cell(Math.floor(kBoardHeight/2), Math.floor(kBoardWidth/2));
+    
     drawBoard();
 }
 
@@ -121,5 +113,11 @@ function initGame(canvasElement) {
     gCanvasElement.height = kPixelHeight;
     gCanvasElement.addEventListener("click", halmaOnClick, false);
     gDrawingContext = gCanvasElement.getContext("2d");
+
+    $.getJSON('/js/level1.json', function (data) {
+	console.log("Got json!");
+	console.log(data);
+	levelLayout=data;
 	newGame();
+	});
 }
