@@ -7,11 +7,13 @@ var playerType;
 var connection;
 var peer;
 function startGameLogic() {
+	document.getElementById("infoArea").innerText=0;
 	connection.on('open', function() {
 		console.log("Opened connection with other player.");
 		connection.on('data', function(data) {
 			console.log("Got data");
 			if(playerType=="attacker") {
+				document.getElementById("infoArea").innerText++;
 				canMove=true;
 			}
 			else {
@@ -41,6 +43,7 @@ function defendSpace(coords) {
 function resolveConflict() {
 	console.log("Resolving conflict");
 	connection.send({"attackSuccess" : false, "attackerCaught" : false});
-	defenderMove=false;
+	defenderMoved=false;
 	attackerMoved=false;
+	document.getElementById("infoArea").innerText++;
 }

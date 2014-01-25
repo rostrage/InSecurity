@@ -10,8 +10,6 @@ var gDrawingContext;
 var gPattern;
 
 var gPiece;
-var gMoveCount;
-var gMoveCountElem;
 
 function Cell(row, column) {
     this.row = row;
@@ -87,7 +85,6 @@ function drawBoard() {
     
 	drawPiece(gPiece, false);
 
-    gMoveCountElem.innerHTML = gMoveCount;
 
 }
 
@@ -110,25 +107,19 @@ function drawPiece(p, selected) {
 
 function newGame() {
     gPiece = new Cell(Math.floor(kBoardHeight/2), Math.floor(kBoardWidth/2));
-    gMoveCount = 0;
     drawBoard();
 }
 
-function initGame(canvasElement, moveCountElement) {
+function initGame(canvasElement) {
     if (!canvasElement) {
         canvasElement = document.createElement("canvas");
 	canvasElement.id = "halma_canvas";
 	document.body.appendChild(canvasElement);
     }
-    if (!moveCountElement) {
-        moveCountElement = document.createElement("p");
-	document.body.appendChild(moveCountElement);
-    }
     gCanvasElement = canvasElement;
     gCanvasElement.width = kPixelWidth;
     gCanvasElement.height = kPixelHeight;
     gCanvasElement.addEventListener("click", halmaOnClick, false);
-    gMoveCountElem = moveCountElement;
     gDrawingContext = gCanvasElement.getContext("2d");
 	newGame();
 }
