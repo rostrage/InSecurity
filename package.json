@@ -1,0 +1,40 @@
+{
+        "name": "InSecurity",
+        "preferGlobal": "false",
+        "version": "0.0.0",
+        "author": "Rick, Ryan, James",
+        "description": "A game of imperfect knowledge.",
+        "contributors": [
+                {
+                        "name": "Rick Anderon",
+                        "email": "rick.rickanderson@gmail.com"
+                },
+                {
+			"name": "Ryan Ostrager",
+			"email": "rostrage@gmail.com
+	        },
+		{
+			"name": "James Sugrim",
+			"email": "ssgrum@winlab.rutgers.edu"
+		}
+        ],
+        "dependencies" : {
+                "express" : "*",
+                "util" : "*",
+                "consolidate" : "*",
+                "request" : "*",
+                "passport" : "*",
+                "passport-google" : "*",
+                "path" : "*",
+                "net" : "*",
+                "bower" : "*",
+                "socket.io" : "*"
+        },
+        "analyze" : false,
+        "devDependencies" : [
+        ],
+        "license" : "MIT",
+        "engines" : {
+                "node": ">=0.8"
+        }        
+}
