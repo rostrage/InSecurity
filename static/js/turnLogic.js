@@ -9,8 +9,6 @@ function initGame(playerType) {
 		connection.on('data', function(data) {
 			if(playerType==attacker) {
 				canMove=true;
-				if(attackSuccess) //you win
-				if(attackerCaught) //you lose
 			}
 			else {
 				attackerMoved=true;
@@ -24,7 +22,7 @@ function initGame(playerType) {
 
 function attackSpace(coords, isAttacking) {
 	myCoords=coords;
-	connection.send({"coords" : coords", "isAttacking" : isAttacking});
+	connection.send({"coords" : coords, "isAttacking" : isAttacking});
 	canMove=false;
 }
 
@@ -34,7 +32,7 @@ function defendSpace(coords) {
 }
 
 function resolveConflict() {
-	connection.send({"attackSuccess" : false, "attackerCaught" : false"});
+	connection.send({"attackSuccess" : false, "attackerCaught" : false});
 	defenderMove=false;
 	attackerMoved=false;
 }
