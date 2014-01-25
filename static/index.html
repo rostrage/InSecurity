@@ -6,7 +6,11 @@
 		</title>
   </head>
   <body>
-		<script type="text/javascript" src="/js/networkWrapper.js"></script>
-		<script type="text/javascript" src="/js/turnManagement.js"></script>
+		<p onClick="chooseDefender()">Defender</p>
+		<p onClick="chooseAttacker()">Attacker</p>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
+		<script type="text/javascript" src="/js/lobby.js"></script>
+		<script type="text/javascript" src="/js/turnLogic.js"></script>
   </body>
 </html>
