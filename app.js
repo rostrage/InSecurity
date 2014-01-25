@@ -20,7 +20,6 @@ io.sockets.on('connection',  function(socket) {
 		if(attackers.length!=0) {
 			var attacker = attackers.pop();
 			socket.emit("foundPartner", attacker.id);
-			attacker.connection.emit("foundPartner", id);
 		}
 		else {
 			defenders.push({"id" : id, "connection" : socket});
@@ -31,7 +30,6 @@ io.sockets.on('connection',  function(socket) {
 		//if there are already defenders, send both players the other players id
 		if(defenders.length!=0) {
 			var defender = defenders.pop();
-			socket.emit("foundPartner", defender.id);
 			defender.connection.emit("foundPartner", id);
 		}
 		//otherwise add them to a waiting list

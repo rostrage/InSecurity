@@ -1,41 +1,46 @@
-var connection;
 function chooseAttacker() {
 	console.log("chooseAttacker");
-	var peer = new Peer({key: 'lwjd5qra8257b9'});	
+	document.getElementById("infoArea").innerText="Searching for partner...";
+	peer = new Peer({key: 'afb1ctzmpbricnmi'});	
 	peer.on('open', function(id) {
-		console.log("peer connection open");
+		console.log("My ID: " + id);
 		var socket = io.connect();
 		socket.on('connect', function() {
 			console.log("I connected");
 			socket.emit('chooseAttacker', id);
 		});
-		socket.on('foundPartner', function(id) {
-			console.log("Connecting to defender");
-			peer.connect(id);	
-		});
 	});
 	peer.on('connection', function(conn) {
-		initGame("attacker", conn);
+		console.log("Got connection");
+		connection = conn;
+		playerType="attacker";
+		initGame(null,infoArea);
+		startGameLogic();
+		connection.on('error', function(err) {
+			console.err(err);
+		});
+		connection.on('close', function() {
+			console.log("Connection closed");
+		});
 	});
-};
-
+}
 function chooseDefender() {
 	console.log("chooseDefender");
-	var peer = new Peer({key: 'lwjd5qra8257b9'});
+	document.getElementById("infoArea").innerText="Searching for partner...";
+	peer = new Peer({key: 'afb1ctzmpbricnmi'});
 	peer.on('open', function(id) {
-		console.log("peer connection open");
+		console.log("My ID: " + id);
 		var socket = io.connect();
 		socket.on('connect', function() {
 			console.log("i connected");
 			socket.emit('chooseDefender', id);
 		});
 		socket.on('foundPartner', function(id) {
-			console.log("Connecting to attacker");
-			peer.connect(id);
+			console.log("Connecting to: " + id);
+			connection = peer.connect(id);
+			playerType = "defender";
+			initGame(null, infoArea);
+			startGameLogic();
 		});
 	});
-	peer.on('connection', function(conn) {
-		connection = conn;
-		initGame("defender");
-	});
-};
+}
