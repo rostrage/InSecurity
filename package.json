@@ -1,32 +1,23 @@
 {
-        "name": "InSecurity",
-        "preferGlobal": "false",
-        "version": "0.0.0",
-        "author": "Rick, Ryan, James",
-        "description": "A game of imperfect knowledge.",
-        "contributors": [
-                {
-                        "name": "Rick Anderon",
-                        "email": "rick.rickanderson@gmail.com"
-                },
-                {
-			"name": "Ryan Ostrager",
-			"email": "rostrage@gmail.com
-	        },
-		{
-			"name": "James Sugrim",
-			"email": "ssgrum@winlab.rutgers.edu"
-		}
-        ],
-        "dependencies" : {
-                "express" : "*",
-                "bower" : "*",
-        },
-        "analyze" : false,
-        "devDependencies" : [
-        ],
-        "license" : "MIT",
-        "engines" : {
-                "node": ">=0.8"
-        }        
+  "name": "InSecurity",
+  "version": "0.0.0",
+  "description": "A game about imperfect information.",
+  "main": "app.js",
+  "dependencies": {
+    "express" : "*",
+    "bower" : "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ricklon/InSecurity.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ricklon/InSecurity/issues"
+  }
 }
