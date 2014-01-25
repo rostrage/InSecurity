@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-		<title>
-			InSecurity
-		</title>
+    <title>
+      InSecurity
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
 		<p onClick="chooseDefender()">Defender</p>
 		<p onClick="chooseAttacker()">Attacker</p>
-		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-		<script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
-		<script type="text/javascript" src="/js/lobby.js"></script>
-		<script type="text/javascript" src="/js/turnLogic.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/peerjs/peer.js"></script>
+    <script type="text/javascript" src="/components/enchant/enchant.js"></script>
+	<script type="text/javascript" src="/js/lobby.js"></script>
+	<script type="text/javascript" src="/js/turnLogic.js"></script>
   </body>
 </html>
