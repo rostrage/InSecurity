@@ -5,7 +5,9 @@
   "main": "app.js",
   "dependencies": {
     "express" : "*",
-    "bower" : "*"
+    "bower" : "*",
+    "socket.io" : "*",
+    "mongojs" : "*"
   },
   "devDependencies": {},
   "scripts": {

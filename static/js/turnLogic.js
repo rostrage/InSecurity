@@ -6,18 +6,24 @@ var myCoords=0;
 var playerType;
 var connection;
 var peer;
+var defenderMoves = [];
+var attackerMoves = [];
 function startGameLogic() {
+	console.log("About to listen for connection open.");
 	document.getElementById("infoArea").innerText=0;
 	connection.on('open', function() {
 		console.log("Opened connection with other player.");
 		connection.on('data', function(data) {
 			console.log("Got data");
 			if(playerType=="attacker") {
+				attackerMoves = data.attackerMoves;
+				defenderMoves = data.defenderMoves;
 				document.getElementById("infoArea").innerText++;
 				canMove=true;
 			}
 			else {
 				attackerMoved=true;
+				attackerMoves.push(data);
 				if(defenderMoved) {
 					resolveConflict();
 				}
@@ -38,11 +44,21 @@ function defendSpace(coords) {
 	if(attackerMoved) {
 		resolveConflict();
 	}
+	defenderMoves.push({
+		"coords" : coords,
+	});
 }
 
 function resolveConflict() {
 	console.log("Resolving conflict");
-	connection.send({"attackSuccess" : false, "attackerCaught" : false});
+	connection.send({
+		"attackerMoves" : attackerMoves,
+		"defenderMoves" : defenderMoves,
+		"results" : {
+			"attackSuccess" : false,
+			 "attackerCaught" : false
+		}
+	});
 	defenderMoved=false;
 	attackerMoved=false;
 	document.getElementById("infoArea").innerText++;

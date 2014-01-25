@@ -4,24 +4,178 @@
     {
       "Name" : "test",
       "position": {
-        "x" : 50,
-        "y" : 5
+        "x" : 10,
+        "y" : 10
       },
-      "size" : 5
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
     },
     {
       "Name" : "test2",
       "position": {
-        "x" : 250,
-        "y" : 5
+        "x" : 10,
+        "y" : 30
       },
-      "size" : 5
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test3",
+      "position": {
+        "x" : 10,
+        "y" : 50
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test4",
+      "position": {
+        "x" : 10,
+        "y" : 70
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test5",
+      "position": {
+        "x" : 10,
+        "y" : 90
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test6",
+      "position": {
+        "x" : 30,
+        "y" : 10
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test7",
+      "position": {
+        "x" : 30,
+        "y" : 30
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test8",
+      "position": {
+        "x" : 30,
+        "y" : 50
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test9",
+      "position": {
+        "x" : 30,
+        "y" : 70
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
+    },
+    {
+      "Name" : "test10",
+      "position": {
+        "x" : 30,
+        "y" : 90
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 5
     }
   ],
   "edges" : [
     {
       "source" : 0,
-      "target" : 1
+      "targets" : [
+        1
+      ]
+    },
+    {
+      "source" : 1,
+      "targets" : [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "source" : 2,
+      "targets" : [
+        1
+      ]
+    },
+    {
+      "source" : 3,
+      "targets" : [
+        4
+      ]
+    },
+    {
+      "source" : 4,
+      "targets" : [
+        1,
+        3,
+        5,
+        6
+      ]
+    },
+    {
+      "source" : 5,
+      "targets" : [
+        4
+      ]
+    },
+    {
+      "source" : 6,
+      "targets" : [
+        4,
+	9,
+        8
+      ]
+    },
+    {
+      "source" : 7,
+      "targets" : [
+	7,
+	6,
+	9
+      ]
+    },
+    {
+      "source" : 8,
+      "targets" : [
+	6,
+        8
+      ]
     }
   ]
 }

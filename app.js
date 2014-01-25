@@ -1,7 +1,9 @@
 var express=require('express'),
 app = express(),
 server = require('http').createServer(app),
-io = require('socket.io').listen(server);
+io = require('socket.io').listen(server),
+mongojs = require('mongojs'),
+db = mongojs("InSecurity", ['defender', 'attacker']);
 console.log("test");
 
 app.use(express.static(__dirname+"/static"));
@@ -9,6 +11,32 @@ app.use(app.router);
 
 app.get('/', function(req, res) {
 	res.redirect('/index.html');
+});
+
+app.post('/api/attacker', function(req, res) {
+	db.collection('attacker').find(req.params, function(err, docs) {
+		if(docs.length==0) {
+			req.params.frequency = 1;
+			db.collection('attacker').save(req.params);
+		}
+		else {
+			db.collection('attacker').update(req.params, {$inc : {"frequency" : 1}});
+		}
+	});
+	res.send(200);
+});
+
+app.post('/api/defender', function(req, res) {
+	db.collection('defender').find(req.params, function(err, docs) {
+		if(docs.length==0) {
+			req.params.frequency = 1;
+			db.collection('defender').save(req.params);
+		}
+		else {
+			db.collection('defender').update(req.params, {$inc : {"frequency" : 1}});
+		}
+	});
+	res.send(200);
 });
 
 var attackers = [];

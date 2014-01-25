@@ -30,10 +30,14 @@ function getCursorPosition(e) {
     }
     x -= gCanvasElement.offsetLeft;
     y -= gCanvasElement.offsetTop;
-    x = Math.min(x, kBoardWidth * kPieceWidth);
-    y = Math.min(y, kBoardHeight * kPieceHeight);
-    var cell = new Cell(Math.floor(y/kPieceHeight), Math.floor(x/kPieceWidth));
-    return cell;
+    for(var index in levelLayout.nodes) {
+	var curNode = levelLayout.nodes[index];
+	var dist = Math.sqrt(Math.pow((curNode.position.x-x),2)+ Math.pow(curNode.position.y-y,2));
+	if(dist<curNode.value) {
+	  return index;
+	}
+    }
+    return null;
 }
 
 function halmaOnClick(e) {
@@ -42,20 +46,17 @@ function halmaOnClick(e) {
 }
 
 function clickOnEmptyCell(cell) {
-	if(((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved))
+	if(cell!=null && ((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved))
 	{
-		gPiece.row = cell.row;
-		gPiece.column = cell.column;
-		gSelectedPieceHasMoved = false;
 		drawBoard();
 		if(playerType=="defender") {
 			console.log("Defending a space");
 			//convert the coordinates into a single number which is the UID of the space
-			defendSpace(cell.row+cell.column*kBoardWidth);
+			defendSpace(cell);
 		}
 		else {
 			console.log("Attacking a space");
-			attackSpace(cell.row+cell.column*kBoardWidth, true);
+			attackSpace(cell, true);
 		}
 		return;
 	}
@@ -65,16 +66,16 @@ function drawBoard() {
 
     gDrawingContext.clearRect(0, 0, kPixelWidth, kPixelHeight);
 
-    gDrawingContext.beginPath();
     
     for (var index in levelLayout.nodes) {
+	console.log("Drawing node");
 	var curNode = levelLayout.nodes[index];
 	gDrawingContext.beginPath();
-	gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.size, 0, Math.PI*2, false);
+	gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
 	gDrawingContext.closePath();
+	    gDrawingContext.strokeStyle = "#000";
+	    gDrawingContext.stroke();
     }
-    gDrawingContext.strokeStyle = "#000";
-    gDrawingContext.stroke();
     
     
 
