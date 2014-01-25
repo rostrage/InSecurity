@@ -20,15 +20,7 @@
         ],
         "dependencies" : {
                 "express" : "*",
-                "util" : "*",
-                "consolidate" : "*",
-                "request" : "*",
-                "passport" : "*",
-                "passport-google" : "*",
-                "path" : "*",
-                "net" : "*",
                 "bower" : "*",
-                "socket.io" : "*"
         },
         "analyze" : false,
         "devDependencies" : [
