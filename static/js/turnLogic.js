@@ -15,6 +15,14 @@ function startGameLogic() {
 		connection.on('data', function(data) {
 			if(playerType=="attacker") {
 				score = data.score;
+				if(data.results.attackSuccess) {
+					//remove all links to a destroyed node
+					for(var index in levelLayout.edges) {
+						if(levelLayout.edges[index].indexOf(myCoords*1)<0) {
+							levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+						}
+					}
+				}
 				if(data.results.attackerCaught) {
 					gameOver("You were caught by the defender!");
 				}
