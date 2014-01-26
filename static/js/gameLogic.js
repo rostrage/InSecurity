@@ -119,6 +119,7 @@ function initGame(canvasElement) {
 	document.body.appendChild(canvasElement);
     }
     gCanvasElement = canvasElement;
+    gCanvasElement.style.display="inherit";
     gCanvasElement.width = kPixelWidth;
     gCanvasElement.height = kPixelHeight;
     gCanvasElement.addEventListener("click", halmaOnClick, false);
