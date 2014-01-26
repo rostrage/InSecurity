@@ -58,6 +58,11 @@ function clickOnEmptyCell(cell) {
 		drawBoard();
 		return;
 	}
+	else if(cell!=null && levelLayoutLayout.edges[myCoords].indexOf(cell.index*1)!=-1) {
+		$('.top-left').notify({
+			'message' : { 'text' : 'You are waiting on the other player.' } 
+		}).show();
+	}
 }
 
 function drawBoard() {
@@ -98,9 +103,17 @@ function drawBoard() {
 		gDrawingContext.stroke();
 	}
     }
-    if(!canMove || (defenderMoved&&!attackerMoved)) {
-	gDrawingContext.fillText("Waiting on other player!", 20, 10);
+
+	gDrawingContext.strokeStyle="#000";
+    for (var ii in levelLayout.edges) {
+    	for (var jj in levelLayout.edges[ii]) {
+		gDrawingContext.beginPath();
+		gDrawingContext.moveTo(levelLayout.nodes[ii].position.x,levelLayout.nodes[ii].position.y);
+		gDrawingContext.lineTo(levelLayout.nodes[levelLayout.edges[ii][jj]].position.x,levelLayout.nodes[levelLayout.edges[ii][jj]].position.y);
+		gDrawingContext.closePath();
+		gDrawingContext.stroke();
 	}
+    }
 }
 
 function newGame() {

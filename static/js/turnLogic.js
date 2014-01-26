@@ -24,14 +24,23 @@ function startGameLogic() {
 					}
 					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
-				if(data.results.attackerCaught) {
+				var isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1]);
+				if(data.results.attackerCaught && !isOnSameSpot) {
 					gameOver("You were exposed!");
+				}
+				if(data.results.attackerCaught) {
+					gameOver("You were caught!");
 				}
 				if(levelLayout.edges[myCoords].length==0) {
 					gameOver("You ran out of spaces to move to!");
 				}
 				attackerMoves = data.attackerMoves;
 				defenderMoves = data.defenderMoves;
+				if(attackerMoves[attackerMoves.length-1].isAttacking) {
+					$('.top-left').notify({
+						'message' : { 'text' : "Your attack failed!" }
+					});
+				}
 				document.getElementById("infoArea").innerText++;
 				canMove=true;
 			}
@@ -48,7 +57,6 @@ function startGameLogic() {
 };
 
 function attackSpace(coords, isAttacking) {
-	console.log(isAttacking);
 	myCoords=coords;
 	connection.send({"coords" : coords, "isAttacking" : isAttacking});
 	canMove=false;
@@ -71,8 +79,8 @@ function resolveConflict() {
 		"attackerMoves" : attackerMoves,
 		"defenderMoves" : defenderMoves,
 		"results" : {
-			"attackSuccess" : (Math.random()*255>levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value && attackerMoves[attackerMoves.length-1].isAttacking),
-			"attackerCaught" : ((Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender &&attackerMoves[attackerMoves.length-1].isAttacking)
+			"attackSuccess" : (Math.random()*255<levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].attackerSuccessChance && attackerMoves[attackerMoves.length-1].isAttacking),
+			"attackerCaught" : ((Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithoutDefender &&attackerMoves[attackerMoves.length-1].isAttacking)
 		}
 	};
 	if(resolution.results.attackSuccess) {
@@ -87,8 +95,11 @@ function resolveConflict() {
 	}
 	resolution.score=score;
 	connection.send(resolution);
-	if(resolution.results.attackerCaught) {
+	if(resolution.results.attackerCaught && !isOnSameSpot) {
 		gameOver("The attacker was exposed!");
+	}
+	if(resolution.results.attackerCaught) {
+		gameOver("You caught the attacker");
 	}
 	if(levelLayout.edges[myCoords].length==0) {
 		gameOver("You ran out of spaces to move to!");
