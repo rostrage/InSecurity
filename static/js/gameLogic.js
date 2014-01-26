@@ -98,6 +98,17 @@ function drawBoard() {
 		gDrawingContext.stroke();
 	}
     }
+
+	gDrawingContext.strokeStyle="#000";
+    for (var ii in levelLayout.edges) {
+    	for (var jj in levelLayout.edges[ii]) {
+		gDrawingContext.beginPath();
+		gDrawingContext.moveTo(levelLayout.nodes[ii].position.x,levelLayout.nodes[ii].position.y);
+		gDrawingContext.lineTo(levelLayout.nodes[levelLayout.edges[ii][jj]].position.x,levelLayout.nodes[levelLayout.edges[ii][jj]].position.y);
+		gDrawingContext.closePath();
+		gDrawingContext.stroke();
+	}
+    }
     if(!canMove || (defenderMoved&&!attackerMoved)) {
 	gDrawingContext.fillText("Waiting on other player!", 20, 10);
 	}
