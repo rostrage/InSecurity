@@ -25,7 +25,7 @@ function startGameLogic() {
 					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
 				var isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1].coords);
-				if(data.results.attackerCaught && ~isOnSameSpot) {
+				if(data.results.attackerCaught && !isOnSameSpot) {
 					gameOver("You were exposed!");
 				}
 				if(data.results.attackerCaught) {
