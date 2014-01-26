@@ -8,7 +8,7 @@
         "y" : 10
       },
       "attackerSuccessChance" : 5,
-      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithDefender" : 256,
       "attackerCaughtWithoutDefender" : 5,
       "value" : 5
     },
@@ -19,7 +19,7 @@
         "y" : 30
       },
       "attackerSuccessChance" : 5,
-      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithDefender" : 200,
       "attackerCaughtWithoutDefender" : 5,
       "value" : 5
     },
@@ -30,7 +30,7 @@
         "y" : 50
       },
       "attackerSuccessChance" : 5,
-      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithDefender" : 150,
       "attackerCaughtWithoutDefender" : 5,
       "value" : 5
     },

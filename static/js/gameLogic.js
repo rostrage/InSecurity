@@ -73,8 +73,17 @@ function drawBoard() {
 	gDrawingContext.beginPath();
 	gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
 	gDrawingContext.closePath();
-	    gDrawingContext.strokeStyle = "#000";
+	if(playerType=="defender") {
+	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,256)";
+	    gDrawingContext.fillStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,256)";
+	  console.log(gDrawingContext.fillStyle);
+	}
+	else {
+	    gDrawingContext.strokeStyle = 0;
+	    gDrawingContext.fillStyle = 0;
+	}
 	    gDrawingContext.stroke();
+	gDrawingContext.fill();
     }
     
     
