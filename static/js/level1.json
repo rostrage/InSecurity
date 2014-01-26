@@ -15,8 +15,8 @@
     {
       "Name" : "test2",
       "position": {
-        "x" : 100,
-        "y" : 150
+        "x" : 150,
+        "y" : 100
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 200,
@@ -37,8 +37,8 @@
     {
       "Name" : "test4",
       "position": {
-        "x" : 250,
-        "y" : 150
+        "x" : 200,
+        "y" : 100
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 5,
