@@ -10,106 +10,106 @@
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 256,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 30
     },
     {
       "Name" : "test2",
       "position": {
         "x" : 10,
-        "y" : 30
+        "y" : 50
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 200,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 30
     },
     {
       "Name" : "test3",
       "position": {
         "x" : 10,
-        "y" : 50
+        "y" : 100
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 150,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 30
     },
     {
       "Name" : "test4",
       "position": {
         "x" : 10,
-        "y" : 70
+        "y" : 150
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 5,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 20
     },
     {
       "Name" : "test5",
       "position": {
         "x" : 10,
-        "y" : 90
+        "y" : 200
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 5,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 25
     },
     {
       "Name" : "test6",
       "position": {
-        "x" : 30,
+        "x" : 100,
         "y" : 10
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 5,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 20
     },
     {
       "Name" : "test7",
       "position": {
-        "x" : 30,
-        "y" : 30
-      },
-      "attackerSuccessChance" : 5,
-      "attackerCaughtWithDefender" : 5,
-      "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
-    },
-    {
-      "Name" : "test8",
-      "position": {
-        "x" : 30,
+        "x" : 100,
         "y" : 50
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 5,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 25
+    },
+    {
+      "Name" : "test8",
+      "position": {
+        "x" : 100,
+        "y" : 150
+      },
+      "attackerSuccessChance" : 5,
+      "attackerCaughtWithDefender" : 5,
+      "attackerCaughtWithoutDefender" : 5,
+      "value" : 30
     },
     {
       "Name" : "test9",
       "position": {
-        "x" : 30,
-        "y" : 70
+        "x" : 100,
+        "y" : 200
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 5,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 35
     },
     {
       "Name" : "test10",
       "position": {
-        "x" : 30,
-        "y" : 90
+        "x" : 100,
+        "y" : 250
       },
       "attackerSuccessChance" : 5,
       "attackerCaughtWithDefender" : 5,
       "attackerCaughtWithoutDefender" : 5,
-      "value" : 5
+      "value" : 40
     }
   ],
   "edges" : [
