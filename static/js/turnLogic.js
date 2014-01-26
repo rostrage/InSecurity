@@ -57,13 +57,13 @@ function defendSpace(coords) {
 }
 
 function resolveConflict() {
-	var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1]);
+	var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1].coords);
 	var resolution = {
 		"attackerMoves" : attackerMoves,
 		"defenderMoves" : defenderMoves,
 		"results" : {
 			"attackSuccess" : (Math.random()*255>levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value && attackerMoves[attackerMoves.length-1].isAttacking),
-			"attackerCaught" : ((Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender)
+			"attackerCaught" : ((Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender &&attackerMoves[attackerMoves.length-1].isAttacking)
 		}
 	};
 	if(resolution.results.attackSuccess) {
