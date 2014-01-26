@@ -58,7 +58,7 @@ function clickOnEmptyCell(cell) {
 		drawBoard();
 		return;
 	}
-	else if(levelLayout.edges[myCoords].indexOf(cell.index*1)==-1) {
+	else if(cell!=null levelLayout.edges[myCoords].indexOf(cell.index*1)==-1) {
 		$.notify("You can't go there!");
 	}
 	else if(cell!=null) {
