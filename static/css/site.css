@@ -23,4 +23,21 @@
 #gameArea {
   border:1px solid #000000;
   display: none;
+  z-index: 1;
+  position: absolute; 
+  left: 0; 
+  top: 0; 
+}
+
+#gameBackground {
+  border:1px solid #000000;
+  //display: none;
+  z-index: 0;
+  position: absolute; 
+  left: 0; 
+ top: 0; 
+}
+#area {
+  //position: relative;
+
 }

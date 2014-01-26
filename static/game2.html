@@ -8,7 +8,7 @@
     <!-- Bootstrap -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/site.css" rel="stylesheet" />
-  </head>
+     </head>
   <body>
     <body class="home">
       <audio controls autoplay  preload loop>
@@ -32,8 +32,28 @@
 
             </div>
             <div id="playerInfo"></div>
+            <div id="area">
             <canvas id="gameArea">
             </canvas>
+            <canvas id="gameBackground" >
+            <script>
+              var canvasBack = document.getElementById("gameBackground"),
+              ctxB = canvasBack.getContext("2d");
+
+              canvasBack.width = 451;
+              canvasBack.height = 451;
+
+
+              var background = new Image();
+              background.src = "img/BG_Field.png";
+
+              // Make sure the image is loaded first otherwise nothing will draw.
+              background.onload = function(){
+                ctxB.drawImage(background,0,0);   
+              }
+            </script>
+            </canvas>
+          </div>
             <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" >&lt;- Back</a>
           </div>
         </div>
@@ -50,6 +70,11 @@
 	    $.getJSON('js/level2.json', function (data) {
 		levelLayout=data;
 		});
-	</script>
+  </script>
+   <link href="/css/bootstrap-notify.css" rel="stylesheet" />
+   <link href="/css/alert-bangify.css" rel="stylesheet" />
+   <link href="/css/alert-blackgloss.css" rel="stylesheet" />
+   <script src="/js/bootstrap-notify.js"></script>
+
   </body>
 </html>
