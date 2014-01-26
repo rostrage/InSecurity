@@ -95,6 +95,7 @@ function drawBoard() {
 	gDrawingContext.fill();
     }
     if(!canMove || (defenderMoved&&!attackerMoved)) {
+	console.log(defenderMoved&&!attackerMoved);
 	gDrawingContext.fillText("Waiting on other player!", 20, 10);
 	}
     
