@@ -46,7 +46,7 @@ function halmaOnClick(e) {
 }
 
 function clickOnEmptyCell(cell) {
-	if(cell!=null && levelLayout.edges[myCoords].indexOf(cell*1)!=-1 && ((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved))
+	if(cell!=null && levelLayout.edges[myCoords].indexOf(cell*1)!=-1 && (((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved)))
 	{
 		if(playerType=="defender") {
 			console.log("Defending a space");
