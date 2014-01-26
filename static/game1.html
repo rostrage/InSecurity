@@ -11,7 +11,7 @@
   </head>
   <body>
     <body class="home">
-       <audio controls  preload loop>
+       <audio controls autoplay  preload loop>
            <source src="music/AnotherLevel.mp3" type="audio/mpeg">
            Your browser does not support the audio element.
        </audio>
@@ -20,7 +20,7 @@
 
         <h1 class="title text-center">InSecurity</h1>
         <div class="jumbotron">
-          <div id="Intro">Choose:</div>
+          <div id="Intro"></div>
           <div align="center">
             <div id="infoArea">
               <div id="player1" onClick="chooseDefender()">
@@ -30,7 +30,7 @@
                 <p>Attacker</p><img src="img/TriangleAttacker.png" />
               </div>
             </div>
-            <div id="playerInfo">PlayerInfo</div>
+            <div id="playerInfo"></div>
 
             <canvas id="gameArea">
             </canvas>
