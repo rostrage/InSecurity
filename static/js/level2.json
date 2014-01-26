@@ -1,0 +1,168 @@
+{
+
+  "nodes" : [
+    {
+      "Name" : "test",
+      "position": {
+        "x" : 50,
+        "y" : 50
+      },
+      "attackerSuccessChance" : 230,
+      "attackerCaughtWithDefender" : 180,
+      "attackerCaughtWithoutDefender" : 50,
+      "value" : 20
+    },
+    {
+      "Name" : "test2",
+      "position": {
+        "x" : 150,
+        "y" : 150
+      },
+      "attackerSuccessChance" : 217,
+      "attackerCaughtWithDefender" : 192,
+      "attackerCaughtWithoutDefender" : 64,
+      "value" : 25
+    },
+    {
+      "Name" : "test3",
+      "position": {
+        "x" : 50,
+        "y" : 250
+      },
+      "attackerSuccessChance" : 156,
+      "attackerCaughtWithDefender" : 204,
+      "attackerCaughtWithoutDefender" : 77,
+      "value" : 30
+    },
+    {
+      "Name" : "test4",
+      "position": {
+        "x" : 200,
+        "y" : 50
+      },
+      "attackerSuccessChance" : 101,
+      "attackerCaughtWithDefender" : 214,
+      "attackerCaughtWithoutDefender" : 82,
+      "value" : 35
+    },
+    {
+      "Name" : "test5",
+      "position": {
+        "x" : 200,
+        "y" : 200
+      },
+      "attackerSuccessChance" : 80,
+      "attackerCaughtWithDefender" : 230,
+      "attackerCaughtWithoutDefender" : 102,
+      "value" : 40
+    },
+    {
+      "Name" : "test6",
+      "position": {
+        "x" : 350,
+        "y" : 50
+      },
+      "attackerSuccessChance" : 70,
+      "attackerCaughtWithDefender" : 215,
+      "attackerCaughtWithoutDefender" : 115,
+      "value" : 40
+    },
+    {
+      "Name" : "test7",
+      "position": {
+        "x" : 300,
+        "y" : 250
+      },
+      "attackerSuccessChance" : 101,
+      "attackerCaughtWithDefender" : 207,
+      "attackerCaughtWithoutDefender" : 85,
+      "value" : 35
+    },
+    {
+      "Name" : "test8",
+      "position": {
+        "x" : 200,
+        "y" : 400
+      },
+      "attackerSuccessChance" : 148,
+      "attackerCaughtWithDefender" : 199,
+      "attackerCaughtWithoutDefender" : 81,
+      "value" : 30
+    },
+    {
+      "Name" : "test9",
+      "position": {
+        "x" : 400,
+        "y" : 400
+      },
+      "attackerSuccessChance" : 217,
+      "attackerCaughtWithDefender" : 192,
+      "attackerCaughtWithoutDefender" : 64,
+      "value" : 25
+    },
+    {
+      "Name" : "test10",
+      "position": {
+        "x" : 350,
+        "y" : 200
+      },
+      "attackerSuccessChance" : 225,
+      "attackerCaughtWithDefender" : 173,
+      "attackerCaughtWithoutDefender" : 68,
+      "value" : 20
+    }
+  ],
+  "edges" : [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        2,
+        4
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        4
+      ],
+      [
+      	4,
+        1,
+        3,
+        5,
+        6
+      ],
+    [
+        5,
+        4
+    ],
+    [
+        6,
+        4,
+	9,
+        8
+    ],
+    [
+	7,
+	8
+    ],
+     [
+	8,
+	7,
+	6,
+	9
+      ],
+      [
+	9,
+	6,
+        8
+      ]
+  ]
+}
+

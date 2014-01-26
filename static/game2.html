@@ -26,7 +26,7 @@
               <div id="player1" onClick="chooseDefender()"> 
                 <p>Defender</p><img src="img/Icon_Defender.png" />
               </div>
-              <div id="player2"  onClick="chooseDefender()">
+              <div id="player2"  onClick="chooseAttacker()">
                 <p>Attacker</p><img src="img/Icon_Attacker.png" />
               </div>
 
@@ -34,7 +34,7 @@
             <div id="playerInfo"></div>
             <canvas id="gameArea">
             </canvas>
-            <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" ><- Back</a>
+            <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" >&lt;- Back</a>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
 	<script type="text/javascript" src="/js/turnLogic.js"></script>
 	<script type="text/javascript" src="/js/gameLogic.js"></script>
 	<script type="text/javascript">
-	    $.getJSON('/js/level2.json', function (data) {
+	    $.getJSON('js/level2.json', function (data) {
 		levelLayout=data;
 		});
 	</script>
