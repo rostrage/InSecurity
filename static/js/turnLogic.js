@@ -70,7 +70,9 @@ function resolveConflict() {
 		score+=levelLayout.nodes[myCoords].value;
 		//remove all links to a destroyed node
 		for(var index in levelLayout.edges) {
-			levelLayout.edges[index] = levelLayout.edges[index].indexOf(myCoords*1)<0 ? levelLayout.edges[index] : levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+			if(levelLayout.edges[index].indexOf(myCoords*1)<0) {
+				levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+			}
 		}
 	}
 	resolution.score=score;
