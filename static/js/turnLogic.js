@@ -94,13 +94,14 @@ function gameOver(reason) {
 		"points" : score,
 		"endCondition" : reason
 	};
-	console.log(gameState);
 	if(playerType=="defender") {
 		$.post('/api/defender', gameState, function(data) {
+			gameStats.playerType = "Defender";
 			window.location = window.location.origin+'/gameover.html#'+encodeURI(JSON.stringify(gameState));
 		});
 	}
 	else {
+		gameStats.playerType = "Attacker";
 		window.location = window.location.origin+'/gameover.html#'+encodeURI(JSON.stringify(gameState));
 	}
 }

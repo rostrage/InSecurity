@@ -1,6 +1,7 @@
 function chooseAttacker() {
 	console.log("chooseAttacker");
 	document.getElementById("infoArea").innerText="Searching for partner...";
+	document.getElementById("playerInfo").innerText = "Attacker";
 	peer = new Peer({
 		key: 'afb1ctzmpbricnmi',
 		 config: {
@@ -36,6 +37,7 @@ function chooseAttacker() {
 function chooseDefender() {
 	console.log("chooseDefender");
 	document.getElementById("infoArea").innerText="Searching for partner...";
+	document.getElementById("playerInfo").innerText = "Defender";
 	peer = new Peer({key: 'afb1ctzmpbricnmi',config: {'iceServers': [
     { url: 'stun:stun.l.google.com:19302' },
     { url: 'turn:test@butterflysmack.com:3478', credential: '1234' }
