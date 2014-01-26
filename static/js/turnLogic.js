@@ -24,8 +24,12 @@ function startGameLogic() {
 					}
 					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
-				if(data.results.attackerCaught) {
+				var isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1].coords);
+				if(data.results.attackerCaught && ~isOnSameSpot) {
 					gameOver("You were exposed!");
+				}
+				if(data.results.attackerCaught) {
+					gameOver("You were caught!");
 				}
 				if(levelLayout.edges[myCoords].length==0) {
 					gameOver("You ran out of spaces to move to!");
@@ -87,8 +91,11 @@ function resolveConflict() {
 	}
 	resolution.score=score;
 	connection.send(resolution);
-	if(resolution.results.attackerCaught) {
+	if(resolution.results.attackerCaught && !isOnSameSpot) {
 		gameOver("The attacker was exposed!");
+	}
+	if(resolution.results.attackerCaught) {
+		gameOver("You caught the attacker");
 	}
 	if(levelLayout.edges[myCoords].length==0) {
 		gameOver("You ran out of spaces to move to!");
