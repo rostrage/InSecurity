@@ -10,7 +10,7 @@
       "attackerSuccessChance" : 114,
       "attackerCaughtWithDefender" : 140,
       "attackerCaughtWithoutDefender" : 51,
-      "value" : 30
+      "value" : 25
     },
     {
       "Name" : "two",
@@ -21,7 +21,7 @@
       "attackerSuccessChance" : 114,
       "attackerCaughtWithDefender" : 140,
       "attackerCaughtWithoutDefender" : 51,
-      "value" : 30
+      "value" : 25
     },
     {
       "Name" : "three",
@@ -32,7 +32,7 @@
       "attackerSuccessChance" : 38,
       "attackerCaughtWithDefender" : 216,
       "attackerCaughtWithoutDefender" : 76,
-      "value" : 40
+      "value" : 35
     },
     {
       "Name" : "four",
@@ -43,7 +43,7 @@
       "attackerSuccessChance" : 153,
       "attackerCaughtWithDefender" : 102,
       "attackerCaughtWithoutDefender" : 38,
-      "value" : 25
+      "value" : 20
     },
     {
       "Name" : "five",
@@ -54,7 +54,7 @@
       "attackerSuccessChance" : 191,
       "attackerCaughtWithDefender" : 64,
       "attackerCaughtWithoutDefender" : 25,
-      "value" : 20
+      "value" : 15
     },
     {
       "Name" : "six",
@@ -65,7 +65,7 @@
       "attackerSuccessChance" : 153,
       "attackerCaughtWithDefender" : 102,
       "attackerCaughtWithoutDefender" : 38,
-      "value" : 25
+      "value" : 20
     },
     {
       "Name" : "seven",
@@ -76,7 +76,7 @@
       "attackerSuccessChance" : 76,
       "attackerCaughtWithDefender" : 178,
       "attackerCaughtWithoutDefender" : 63,
-      "value" : 35
+      "value" : 30
     },
     {
       "Name" : "eight",
@@ -87,7 +87,7 @@
       "attackerSuccessChance" : 76,
       "attackerCaughtWithDefender" : 178,
       "attackerCaughtWithoutDefender" : 63,
-      "value" : 35
+      "value" : 30
     },
     {
       "Name" : "nine",
@@ -98,7 +98,7 @@
       "attackerSuccessChance" : 191,
       "attackerCaughtWithDefender" : 64,
       "attackerCaughtWithoutDefender" : 25,
-      "value" : 20
+      "value" : 15
     },
     {
       "Name" : "ten",
@@ -109,7 +109,7 @@
       "attackerSuccessChance" : 38,
       "attackerCaughtWithDefender" : 216,
       "attackerCaughtWithoutDefender" : 76,
-      "value" : 40
+      "value" : 35
     }
   ],
   "edges" : [
