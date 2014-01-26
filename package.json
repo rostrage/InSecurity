@@ -1,0 +1,29 @@
+{
+  "name": "InSecurity",
+  "version": "0.0.0",
+  "description": "A game about imperfect information.",
+  "main": "app.js",
+  "dependencies": {
+    "express" : "*",
+    "bower" : "*",
+<<<<<<< HEAD
+    "socket.io" : "*"
+=======
+    "socket.io" : "*",
+    "mongojs" : "*"
+>>>>>>> upstream/master
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ricklon/InSecurity.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ricklon/InSecurity/issues"
+  }
+}
