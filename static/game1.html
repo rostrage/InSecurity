@@ -46,5 +46,10 @@
 	<script type="text/javascript" src="/js/lobby.js"></script>
 	<script type="text/javascript" src="/js/turnLogic.js"></script>
 	<script type="text/javascript" src="/js/gameLogic.js"></script>
+	<script type="text/javascript">
+	    $.getJSON('/js/level1.json', function (data) {
+		levelLayout=data;
+		});
+	</script>
   </body>
 </html>

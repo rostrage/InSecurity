@@ -11,29 +11,30 @@
   </head>
   <body>
     <body class="home">
-      <audio controls autoplay  preload loop>
-      <source src="music/SubmarineLevel.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio>
+       <audio controls autoplay  preload loop>
+           <source src="music/AnotherLevel.mp3" type="audio/mpeg">
+           Your browser does not support the audio element.
+       </audio>
 
       <div class="container">
 
         <h1 class="title text-center">InSecurity</h1>
         <div class="jumbotron">
-          <div id="Intro">Defender and Attacker of the realm</div>
+          <div id="Intro"></div>
           <div align="center">
             <div id="infoArea">
-              <div id="player1" onClick="chooseDefender()"> 
-                <p>Defender</p><img src="img/Icon_Defender.png" />
+              <div id="player1" onClick="chooseDefender()">
+                <p>Defender</p><img src="img/TriangleDefender.png" />
               </div>
-              <div id="player2"  onClick="chooseDefender()">
-                <p>Attacker</p><img src="img/Icon_Attacker.png" />
+              <div id="player2"  onClick="chooseAttacker()">
+                <p>Attacker</p><img src="img/TriangleAttacker.png" />
               </div>
-
             </div>
+            <div id="playerInfo"></div>
+
             <canvas id="gameArea">
             </canvas>
-            <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" ><- Back</a>
+            <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" >&lt;- Back</a>
           </div>
         </div>
       </div>
@@ -46,7 +47,7 @@
 	<script type="text/javascript" src="/js/turnLogic.js"></script>
 	<script type="text/javascript" src="/js/gameLogic.js"></script>
 	<script type="text/javascript">
-	    $.getJSON('/js/level2.json', function (data) {
+	    $.getJSON('/js/level5.json', function (data) {
 		levelLayout=data;
 		});
 	</script>
