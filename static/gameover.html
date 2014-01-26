@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      InSecurity
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/site.css" rel="stylesheet" />
+  </head>
+  <body>
+    <body class="home">
+       <audio controls  preload loop>
+           <source src="music/AnotherLevel.mp3" type="audio/mpeg">
+           Your browser does not support the audio element.
+       </audio>
+
+      <div class="container">
+
+        <h1 class="title text-center">InSecurity</h1>
+        <div class="jumbotron">
+          <div id="Intro">Game Over</div>
+          <div align="center">
+            <div id="infoArea">
+            </div>
+            <div id="playerInfo">PlayerInfo</div>
+
+            <div id="endCondition">End Condition:</div>
+            <div id="score">Score:</div>
+
+            <canvas id="gameArea">
+            </canvas>
+
+            <canvas id=heatmap">
+            </canvas>
+            <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" >&lt;- Back</a>
+          </div>
+        </div>
+      </div>
+
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/bower_components/peerjs/peer.js"></script>
+	<script type="text/javascript" src="/js/lobby.js"></script>
+	<script type="text/javascript" src="/js/turnLogic.js"></script>
+	<script type="text/javascript" src="/js/gameLogic.js"></script>
+  </body>
+</html>
