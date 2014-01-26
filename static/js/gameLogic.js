@@ -74,10 +74,9 @@ function drawBoard() {
 		gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
 	}
 	else {
-		gDrawingContext.moveTo(curNode.position.x-curNode.value/Math.sqrt(2),curNode.position.y+3*curNode.value/Math.sqrt(2));
-		gDrawingContext.lineTo(curNode.position.x,curNode.position.y+curNode.value);
-		gDrawingContext.lineTo(curNode.position.x+curNode.value/2,curNode.position.y+3*curNode.value/Math.sqrt(2));
-		gDrawingContext.lineTo(curNode.position.x, curNode.position.y);
+		gDrawingContext.moveTo(curNode.position.x,curNode.position.y-curNode.value);
+		gDrawingContext.lineTo(curNode.position.x-2*curNode.value/Math.sqrt(3),curNode.position.y+curNode.value);
+		gDrawingContext.lineTo(curNode.position.x+2*curNode.value/Math.sqrt(3),curNode.position.y+curNode.value);
 	}
 	gDrawingContext.closePath();
 	console.log(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1));
@@ -93,6 +92,13 @@ function drawBoard() {
 	}
 	    gDrawingContext.stroke();
 	gDrawingContext.fill();
+	gDrawingContext.beginPath();
+	gDrawingContext.moveTo(curNode.position.x,curNode.position.y+curNode.value);
+	gDrawingContext.lineTo(curNode.position.x,curNode.position.y-curNode.value);
+	gDrawingContext.closePath();
+	gDrawingContext.strokeStyle="#FFF";
+	gDrawingContext.stroke();
+	
     }
     if(!canMove || (defenderMoved&&!attackerMoved)) {
 	console.log(defenderMoved&&!attackerMoved);
