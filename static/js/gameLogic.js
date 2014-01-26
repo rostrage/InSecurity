@@ -122,8 +122,5 @@ function initGame(canvasElement) {
     gCanvasElement.addEventListener("click", halmaOnClick, false);
     gDrawingContext = gCanvasElement.getContext("2d");
 
-    $.getJSON('/js/level1.json', function (data) {
-	levelLayout=data;
 	newGame();
-	});
 }

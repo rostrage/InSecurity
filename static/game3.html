@@ -8,6 +8,7 @@
     <!-- Bootstrap -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/site.css" rel="stylesheet" />
+    <link href="/css/game3.css" rel="stylesheet" />
   </head>
   <body>
     <body class="home">
@@ -20,7 +21,7 @@
 
         <h1 class="title text-center">InSecurity</h1>
         <div class="jumbotron">
-          <div id="Intro"></div>
+          <div id="Intro">Security vs Smoking</div>
           <div align="center">
             <div id="infoArea">
               <div id="player1" onClick="chooseDefender()">
@@ -47,7 +48,7 @@
 	<script type="text/javascript" src="/js/turnLogic.js"></script>
 	<script type="text/javascript" src="/js/gameLogic.js"></script>
 	<script type="text/javascript">
-	    $.getJSON('/js/level1.json', function (data) {
+	    $.getJSON('/js/level3.json', function (data) {
 		levelLayout=data;
 		});
 	</script>

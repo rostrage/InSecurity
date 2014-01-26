@@ -40,30 +40,32 @@ app.post('/api/defender', function(req, res) {
 	res.send(200);
 });
 
-var attackers = [];
-var defenders = [];
+var attackers = {};
+var defenders = {};
 io.sockets.on('connection',  function(socket) {
 	console.log("Someone connected");
-	socket.on('chooseDefender', function(id) {
+	socket.on('chooseDefender', function(id, room) {
 		console.log("Someone choose a defender");
-		if(attackers.length!=0) {
-			var attacker = attackers.pop();
+		if(attackers[room] && attackers[room].length!=0) {
+			var attacker = attackers[room].pop();
 			socket.emit("foundPartner", attacker.id);
 		}
 		else {
-			defenders.push({"id" : id, "connection" : socket});
+			if(!defenders[room]) defenders[room] = [];
+			defenders[room].push({"id" : id, "connection" : socket});
 		}
 	});
-	socket.on('chooseAttacker', function(id, connnectedEvent) {
+	socket.on('chooseAttacker', function(id, room) {
 		console.log("Someone choose an attacker");
 		//if there are already defenders, send both players the other players id
-		if(defenders.length!=0) {
-			var defender = defenders.pop();
+		if(defenders[room] && defenders[room].length!=0) {
+			var defender = defenders[room].pop();
 			defender.connection.emit("foundPartner", id);
 		}
 		//otherwise add them to a waiting list
 		else {
-			attackers.push({"id" : id, "connection" : socket});
+			if(!attackers[room]) attackers[room]=[];
+			attackers[room].push({"id" : id, "connection" : socket});
 		}
 	});
 	socket.on('disconnect', function() {

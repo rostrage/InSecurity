@@ -17,7 +17,7 @@ function chooseAttacker() {
 		var socket = io.connect();
 		socket.on('connect', function() {
 			console.log("Attacker connected to lobby");
-			socket.emit('chooseAttacker', id);
+			socket.emit('chooseAttacker', id, window.location.pathname);
 		});
 	});
 	peer.on('connection', function(conn) {
@@ -47,7 +47,7 @@ function chooseDefender() {
 		var socket = io.connect();
 		socket.on('connect', function() {
 			console.log("Defender connected to lobby");
-			socket.emit('chooseDefender', id);
+			socket.emit('chooseDefender', id, window.location.pathname);
 		});
 		socket.on('foundPartner', function(id) {
 			console.log("Connecting to: " + id);
