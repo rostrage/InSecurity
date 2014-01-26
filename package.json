@@ -1,0 +1,25 @@
+{
+  "name": "InSecurity",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bower": "~1.2.8",
+    "express": "~3.4.8",
+    "mongojs": "~0.10.0",
+    "socket.io": "~0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ricklon/InSecurity.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ricklon/InSecurity/issues"
+  }
+}
