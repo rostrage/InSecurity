@@ -103,8 +103,8 @@
     {
       "Name" : "ten",
       "position": {
-        "x" : 200,
-        "y" : 200
+        "x" : 210,
+        "y" : 210
       },
       "attackerSuccessChance" : 38,
       "attackerCaughtWithDefender" : 216,
