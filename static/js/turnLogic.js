@@ -14,7 +14,7 @@ function startGameLogic() {
 	connection.on('open', function() {
 		console.log("Opened connection with other player.");
 		connection.on('data', function(data) {
-			console.log("Got data");
+			console.log(data);
 			if(playerType=="attacker") {
 				attackerMoves = data.attackerMoves;
 				defenderMoves = data.defenderMoves;
@@ -28,6 +28,7 @@ function startGameLogic() {
 					resolveConflict();
 				}
 			}
+			drawBoard();
 		});
 	});
 };

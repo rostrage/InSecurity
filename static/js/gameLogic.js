@@ -46,7 +46,7 @@ function halmaOnClick(e) {
 }
 
 function clickOnEmptyCell(cell) {
-	if(cell!=null && ((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved) &&levelLayout.edges[myCoords].indexOf(cell*1)!=-1)
+	if(cell!=null && levelLayout.edges[myCoords].indexOf(cell*1)!=-1 && (((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved)))
 	{
 		if(playerType=="defender") {
 			console.log("Defending a space");
@@ -80,6 +80,7 @@ function drawBoard() {
 		gDrawingContext.lineTo(curNode.position.x, curNode.position.y);
 	}
 	gDrawingContext.closePath();
+	console.log(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1));
 	if(playerType=="defender") {
 		console.log(128*(1+(levelLayout.edges[myCoords].indexOf(index*1)>0)));
 	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
@@ -93,6 +94,10 @@ function drawBoard() {
 	    gDrawingContext.stroke();
 	gDrawingContext.fill();
     }
+    if(!canMove || (defenderMoved&&!attackerMoved)) {
+	console.log(defenderMoved&&!attackerMoved);
+	gDrawingContext.fillText("Waiting on other player!", 20, 10);
+	}
     
     
 
@@ -121,6 +126,7 @@ function newGame() {
 }
 
 function initGame(canvasElement) {
+    myCoords = Math.floor(10*Math.random());
     if (!canvasElement) {
         canvasElement = document.createElement("canvas");
 	canvasElement.id = "halma_canvas";
