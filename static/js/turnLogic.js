@@ -8,6 +8,7 @@ var connection;
 var peer;
 var defenderMoves = [];
 var attackerMoves = [];
+var score;
 function startGameLogic() {
 	console.log("About to listen for connection open.");
 	document.getElementById("infoArea").innerText=0;
@@ -53,14 +54,22 @@ function defendSpace(coords) {
 function resolveConflict() {
 	console.log("Resolving conflict");
 	var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1]);
-	connection.send({
+	var resolution = {
 		"attackerMoves" : attackerMoves,
 		"defenderMoves" : defenderMoves,
 		"results" : {
-			"attackSuccess" : (Math.random*256>levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords] && attackerMoves[attackerMoves.length-1].isAttacking),
-			"attackerCaught" : ((Math.random*256>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random*256>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender)
+			"attackSuccess" : (Math.random*255>levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords] && attackerMoves[attackerMoves.length-1].isAttacking),
+			"attackerCaught" : ((Math.random*255>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random*255>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender)
 		}
-	});
+	};
+	connection.send(resolution);
+	if(resolution.results.attackSuccess) {
+		score+=levelLayout.nodes[myCoords].value;
+		//remove all links to a destroyed node
+		for(var index in levelLayout.edges) {
+			levelLayout.edges[index] = levelLayout.edges[index].indexOf(myCoords*1)<0 ? levelLayout.edges[index] : levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+		}
+	}
 	defenderMoved=false;
 	attackerMoved=false;
 	document.getElementById("infoArea").innerText++;

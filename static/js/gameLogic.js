@@ -34,7 +34,7 @@ function getCursorPosition(e) {
 	var curNode = levelLayout.nodes[index];
 	var dist = Math.sqrt(Math.pow((curNode.position.x-x),2)+ Math.pow(curNode.position.y-y,2));
 	if(dist<curNode.value) {
-	  return index;
+	  return {"index" : index, "isAttacking" : x>curNode.position.x};
 	}
     }
     return null;
@@ -46,16 +46,16 @@ function halmaOnClick(e) {
 }
 
 function clickOnEmptyCell(cell) {
-	if(cell!=null && levelLayout.edges[myCoords].indexOf(cell*1)!=-1 && (((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved)))
+	if(cell!=null && levelLayout.edges[myCoords].indexOf(cell.index*1)!=-1 && (((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved)))
 	{
 		if(playerType=="defender") {
 			console.log("Defending a space");
 			//convert the coordinates into a single number which is the UID of the space
-			defendSpace(cell);
+			defendSpace(cell.index);
 		}
 		else {
 			console.log("Attacking a space");
-			attackSpace(cell, true);
+			attackSpace(cell.index, cell.isAttacking);
 		}
 		drawBoard();
 		return;
@@ -98,26 +98,6 @@ function drawBoard() {
 	console.log(defenderMoved&&!attackerMoved);
 	gDrawingContext.fillText("Waiting on other player!", 20, 10);
 	}
-    
-    
-
-}
-
-function drawPiece(p, selected) {
-    var column = p.column;
-    var row = p.row;
-    var x = (column * kPieceWidth) + (kPieceWidth/2);
-    var y = (row * kPieceHeight) + (kPieceHeight/2);
-    var radius = (kPieceWidth/2) - (kPieceWidth/10);
-    gDrawingContext.beginPath();
-    gDrawingContext.arc(x, y, radius, 0, Math.PI*2, false);
-    gDrawingContext.closePath();
-    gDrawingContext.strokeStyle = "#000";
-    gDrawingContext.stroke();
-    if (selected) {
-	gDrawingContext.fillStyle = "#000";
-	gDrawingContext.fill();
-    }
 }
 
 function newGame() {
