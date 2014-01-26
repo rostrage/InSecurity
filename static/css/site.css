@@ -1,0 +1,16 @@
+.home {
+  background-color: black;
+
+}
+.title {
+  color: #AAAAAA;
+  font-size: 63px;
+}
+.play {
+  background-color: black;
+
+}
+.play:hover {
+ background-color: grey;
+
+}
