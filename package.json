@@ -1,17 +1,13 @@
 {
   "name": "InSecurity",
   "version": "0.0.0",
-  "description": "A game about imperfect information.",
+  "description": "",
   "main": "app.js",
   "dependencies": {
-    "express" : "*",
-    "bower" : "*",
-<<<<<<< HEAD
-    "socket.io" : "*"
-=======
-    "socket.io" : "*",
-    "mongojs" : "*"
->>>>>>> upstream/master
+    "bower": "~1.2.8",
+    "express": "~3.4.8",
+    "mongojs": "~0.10.0",
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {},
   "scripts": {

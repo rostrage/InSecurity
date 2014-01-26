@@ -7,6 +7,7 @@ db = mongojs("InSecurity", ['defender', 'attacker']);
 console.log("test");
 
 app.use(express.static(__dirname+"/static"));
+app.use(express.bodyParser());
 app.use(app.router);
 
 app.get('/', function(req, res) {
@@ -27,13 +28,13 @@ app.post('/api/attacker', function(req, res) {
 });
 
 app.post('/api/defender', function(req, res) {
-	db.collection('defender').find(req.params, function(err, docs) {
+	db.collection('defender').find(req.body, function(err, docs) {
 		if(docs.length==0) {
-			req.params.frequency = 1;
-			db.collection('defender').save(req.params);
+			req.body.frequency = 1;
+			db.collection('defender').save(req.body);
 		}
 		else {
-			db.collection('defender').update(req.params, {$inc : {"frequency" : 1}});
+			db.collection('defender').update(req.body, {$inc : {"frequency" : 1}});
 		}
 	});
 	res.send(200);

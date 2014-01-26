@@ -20,19 +20,19 @@
 
         <h1 class="title text-center">InSecurity</h1>
         <div class="jumbotron">
-          <div id="Intro"></div>
+          <div id="Intro">Game Over</div>
           <div align="center">
             <div id="infoArea">
-              <div id="player1" onClick="chooseDefender()">
-                <p>Defender</p><img src="img/TriangleDefender.png" />
-              </div>
-              <div id="player2"  onClick="chooseAttacker()">
-                <p>Attacker</p><img src="img/TriangleAttacker.png" />
-              </div>
             </div>
             <div id="playerInfo"></div>
 
+            <div id="endCondition">End Condition:</div>
+            <div id="score">Score:</div>
+
             <canvas id="gameArea">
+            </canvas>
+
+            <canvas id=heatmap">
             </canvas>
             <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" >&lt;- Back</a>
           </div>
@@ -43,8 +43,6 @@
   <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
   <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/bower_components/peerjs/peer.js"></script>
-	<script type="text/javascript" src="/js/lobby.js"></script>
-	<script type="text/javascript" src="/js/turnLogic.js"></script>
-	<script type="text/javascript" src="/js/gameLogic.js"></script>
+  <script type="text/javascript" src="/js/gameover.js"></script>
   </body>
 </html>
