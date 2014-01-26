@@ -6,33 +6,27 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-	#pup {
-  position:absolute;
-  z-index:200; /* aaaalways on top*/
-  padding: 3px;
-  margin-left: 10px;
-  margin-top: 5px;
-  width: 250px;
-  border: 1px solid black;
-  background-color: #777;
-  color: white;
-  font-size: 0.95em;
-}
-</style>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
   </head>
-  <body>
-	<div id="infoArea">
-		<p onClick="chooseDefender()" onmouseover="nhpup.popup('click to see all administration options')">Defender</p>
-		<p onClick="chooseAttacker()">Attacker</p>
-	</div>
-	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
-    <script type="text/javascript" src="js/nhpup_1.1.js"></script>
-    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/bower_components/peerjs/peer.js"></script>
-    <script type="text/javascript" src="/components/enchant/enchant.js"></script>
+  <body class="home">
+    <div class="container">
+      
+      <h1 class="title text-center">InSecurity</h1>
+    <div class="jumbotron">
+      <div id="Intro">A game of imperfect information. </div>
+      <div>How do you make decisions in the face of adversity.</div>
+      <div align="center">
+        <a class="btn btn-primary btn-lg play" role="button" href="gamepicker.html">Play -></a>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/bower_components/peerjs/peer.js"></script>
+  <script type="text/javascript" src="/components/enchant/enchant.js"></script>
 	<script type="text/javascript" src="/js/lobby.js"></script>
 	<script type="text/javascript" src="/js/turnLogic.js"></script>
 	<script type="text/javascript" src="/js/gameLogic.js"></script>
