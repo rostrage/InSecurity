@@ -22,6 +22,7 @@ function startGameLogic() {
 							levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
 						}
 					}
+					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
 				if(data.results.attackerCaught) {
 					gameOver("You were caught by the defender!");
@@ -75,13 +76,14 @@ function resolveConflict() {
 		}
 	};
 	if(resolution.results.attackSuccess) {
-		score+=levelLayout.nodes[myCoords].value;
+		score+=levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value;
 		//remove all links to a destroyed node
 		for(var index in levelLayout.edges) {
 			if(levelLayout.edges[index].indexOf(myCoords*1)<0) {
 				levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
 			}
 		}
+		levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].isDisabled=true;
 	}
 	resolution.score=score;
 	connection.send(resolution);

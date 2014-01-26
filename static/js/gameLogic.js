@@ -95,7 +95,6 @@ function drawBoard() {
 		gDrawingContext.strokeStyle="#FFF";
 		gDrawingContext.stroke();
 	}
-	
     }
     if(!canMove || (defenderMoved&&!attackerMoved)) {
 	gDrawingContext.fillText("Waiting on other player!", 20, 10);
