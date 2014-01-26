@@ -24,7 +24,7 @@ function startGameLogic() {
 					}
 					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
-				var isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1].coords);
+				var isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1]);
 				if(data.results.attackerCaught && !isOnSameSpot) {
 					gameOver("You were exposed!");
 				}
@@ -52,7 +52,6 @@ function startGameLogic() {
 };
 
 function attackSpace(coords, isAttacking) {
-	console.log(isAttacking);
 	myCoords=coords;
 	connection.send({"coords" : coords, "isAttacking" : isAttacking});
 	canMove=false;
@@ -75,7 +74,7 @@ function resolveConflict() {
 		"attackerMoves" : attackerMoves,
 		"defenderMoves" : defenderMoves,
 		"results" : {
-			"attackSuccess" : (Math.random()*255<levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value && attackerMoves[attackerMoves.length-1].isAttacking),
+			"attackSuccess" : (Math.random()*255<levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].attackerSuccessChance && attackerMoves[attackerMoves.length-1].isAttacking),
 			"attackerCaught" : ((Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithoutDefender &&attackerMoves[attackerMoves.length-1].isAttacking)
 		}
 	};

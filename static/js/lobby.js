@@ -9,8 +9,7 @@ function chooseAttacker() {
     				{ url: 'stun:stun.l.google.com:19302' },
     				{ url: 'turn:test@butterflysmack.com:3478', credential: '1234' }
 		  	]
-		},
-		debug : 3
+		}
 	});	
 	peer.on('open', function(id) {
 		console.log("My ID: " + id);
@@ -41,7 +40,7 @@ function chooseDefender() {
 	peer = new Peer({key: 'afb1ctzmpbricnmi',config: {'iceServers': [
     { url: 'stun:stun.l.google.com:19302' },
     { url: 'turn:test@butterflysmack.com:3478', credential: '1234' }
-  ]}, "debug" : 3});
+  ]}});
 	peer.on('open', function(id) {
 		console.log("My ID: " + id);
 		var socket = io.connect();
