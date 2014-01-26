@@ -14,6 +14,7 @@ function startGameLogic() {
 	connection.on('open', function() {
 		connection.on('data', function(data) {
 			if(playerType=="attacker") {
+				score = data.score;
 				if(data.results.attackerCaught) {
 					gameOver("You were caught by the defender!");
 				}
@@ -65,7 +66,6 @@ function resolveConflict() {
 			"attackerCaught" : ((Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender)
 		}
 	};
-	connection.send(resolution);
 	if(resolution.results.attackSuccess) {
 		score+=levelLayout.nodes[myCoords].value;
 		//remove all links to a destroyed node
@@ -73,6 +73,8 @@ function resolveConflict() {
 			levelLayout.edges[index] = levelLayout.edges[index].indexOf(myCoords*1)<0 ? levelLayout.edges[index] : levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
 		}
 	}
+	resolution.score=score;
+	connection.send(resolution);
 	if(resolution.results.attackerCaught) {
 		gameOver("You caught the attacker!");
 	}
