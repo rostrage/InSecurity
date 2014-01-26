@@ -14,7 +14,7 @@ function startGameLogic() {
 	connection.on('open', function() {
 		console.log("Opened connection with other player.");
 		connection.on('data', function(data) {
-			console.log("Got data");
+			console.log(data);
 			if(playerType=="attacker") {
 				attackerMoves = data.attackerMoves;
 				defenderMoves = data.defenderMoves;
@@ -28,6 +28,7 @@ function startGameLogic() {
 					resolveConflict();
 				}
 			}
+			drawBoard();
 		});
 	});
 };
@@ -51,12 +52,13 @@ function defendSpace(coords) {
 
 function resolveConflict() {
 	console.log("Resolving conflict");
+	var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1]);
 	connection.send({
 		"attackerMoves" : attackerMoves,
 		"defenderMoves" : defenderMoves,
 		"results" : {
-			"attackSuccess" : false,
-			 "attackerCaught" : false
+			"attackSuccess" : (Math.random*256>levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords] && attackerMoves[attackerMoves.length-1].isAttacking),
+			"attackerCaught" : ((Math.random*256>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random*256>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender)
 		}
 	});
 	defenderMoved=false;
