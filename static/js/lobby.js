@@ -23,7 +23,7 @@ function chooseAttacker() {
 		console.log("Attacker got  peer connection");
 		connection = conn;
 		playerType="attacker";
-		initGame(null);
+		initGame(document.getElementById('gameArea'));
 		startGameLogic();
 		connection.on('error', function(err) {
 			console.log(err);
@@ -51,7 +51,7 @@ function chooseDefender() {
 			console.log("Connecting to: " + id);
 			connection = peer.connect(id);
 			playerType = "defender";
-			initGame(null);
+			initGame(document.getElementById("gameArea"));
 			startGameLogic();
 		});
 	});

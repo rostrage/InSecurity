@@ -46,9 +46,8 @@ function halmaOnClick(e) {
 }
 
 function clickOnEmptyCell(cell) {
-	if(cell!=null && ((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved))
+	if(cell!=null && ((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved) &&levelLayout.edges[myCoords].indexOf(cell*1)!=-1)
 	{
-		drawBoard();
 		if(playerType=="defender") {
 			console.log("Defending a space");
 			//convert the coordinates into a single number which is the UID of the space
@@ -58,29 +57,38 @@ function clickOnEmptyCell(cell) {
 			console.log("Attacking a space");
 			attackSpace(cell, true);
 		}
+		drawBoard();
 		return;
 	}
 }
 
 function drawBoard() {
-
+	
     gDrawingContext.clearRect(0, 0, kPixelWidth, kPixelHeight);
 
     
     for (var index in levelLayout.nodes) {
-	console.log("Drawing node");
 	var curNode = levelLayout.nodes[index];
 	gDrawingContext.beginPath();
-	gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
+	if(index!=myCoords) {
+		gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
+	}
+	else {
+		gDrawingContext.moveTo(curNode.position.x,curNode.position.y);
+		gDrawingContext.lineTo(curNode.position.x+curNode.value,curNode.position.y);
+		gDrawingContext.lineTo(curNode.position.x+curNode.value/2,curNode.position.y+curNode.value/2);
+		gDrawingContext.lineTo(curNode.position.x, curNode.position.y);
+	}
 	gDrawingContext.closePath();
 	if(playerType=="defender") {
-	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,256)";
-	    gDrawingContext.fillStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,256)";
+		console.log(128*(1+(levelLayout.edges[myCoords].indexOf(index*1)>0)));
+	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
+	    gDrawingContext.fillStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
 	  console.log(gDrawingContext.fillStyle);
 	}
 	else {
-	    gDrawingContext.strokeStyle = 0;
-	    gDrawingContext.fillStyle = 0;
+	    gDrawingContext.strokeStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
+	    gDrawingContext.fillStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
 	}
 	    gDrawingContext.stroke();
 	gDrawingContext.fill();
