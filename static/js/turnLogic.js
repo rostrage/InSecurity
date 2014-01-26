@@ -25,7 +25,7 @@ function startGameLogic() {
 					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
 				if(data.results.attackerCaught) {
-					gameOver("You were caught by the defender!");
+					gameOver("You were exposed!");
 				}
 				if(levelLayout.edges[myCoords].length==0) {
 					gameOver("You ran out of spaces to move to!");
@@ -88,7 +88,7 @@ function resolveConflict() {
 	resolution.score=score;
 	connection.send(resolution);
 	if(resolution.results.attackerCaught) {
-		gameOver("You caught the attacker!");
+		gameOver("The attacker was exposed!");
 	}
 	if(levelLayout.edges[myCoords].length==0) {
 		gameOver("You ran out of spaces to move to!");
