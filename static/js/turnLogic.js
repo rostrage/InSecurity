@@ -96,12 +96,12 @@ function gameOver(reason) {
 	};
 	if(playerType=="defender") {
 		$.post('/api/defender', gameState, function(data) {
-			gameStats.playerType = "Defender";
+			gameState.playerType = "Defender";
 			window.location = window.location.origin+'/gameover.html#'+encodeURI(JSON.stringify(gameState));
 		});
 	}
 	else {
-		gameStats.playerType = "Attacker";
+		gameState.playerType = "Attacker";
 		window.location = window.location.origin+'/gameover.html#'+encodeURI(JSON.stringify(gameState));
 	}
 }
