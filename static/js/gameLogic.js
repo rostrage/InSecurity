@@ -80,6 +80,7 @@ function drawBoard() {
 		gDrawingContext.lineTo(curNode.position.x, curNode.position.y);
 	}
 	gDrawingContext.closePath();
+	console.log(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1));
 	if(playerType=="defender") {
 		console.log(128*(1+(levelLayout.edges[myCoords].indexOf(index*1)>0)));
 	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
@@ -124,6 +125,7 @@ function newGame() {
 }
 
 function initGame(canvasElement) {
+    myCoords = Math.floor(10*Math.random());
     if (!canvasElement) {
         canvasElement = document.createElement("canvas");
 	canvasElement.id = "halma_canvas";
