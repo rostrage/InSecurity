@@ -8,15 +8,18 @@ var connection;
 var peer;
 var defenderMoves = [];
 var attackerMoves = [];
-var score;
+var score = 0;
 function startGameLogic() {
-	console.log("About to listen for connection open.");
 	document.getElementById("infoArea").innerText=0;
 	connection.on('open', function() {
-		console.log("Opened connection with other player.");
 		connection.on('data', function(data) {
-			console.log(data);
 			if(playerType=="attacker") {
+				if(data.results.attackerCaught) {
+					gameOver("You were caught by the defender!");
+				}
+				if(levelLayout.edges[myCoords].length==0) {
+					gameOver("You ran out of spaces to move to!");
+				}
 				attackerMoves = data.attackerMoves;
 				defenderMoves = data.defenderMoves;
 				document.getElementById("infoArea").innerText++;
@@ -35,6 +38,7 @@ function startGameLogic() {
 };
 
 function attackSpace(coords, isAttacking) {
+	console.log(isAttacking);
 	myCoords=coords;
 	connection.send({"coords" : coords, "isAttacking" : isAttacking});
 	canMove=false;
@@ -52,14 +56,13 @@ function defendSpace(coords) {
 }
 
 function resolveConflict() {
-	console.log("Resolving conflict");
 	var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1]);
 	var resolution = {
 		"attackerMoves" : attackerMoves,
 		"defenderMoves" : defenderMoves,
 		"results" : {
-			"attackSuccess" : (Math.random*255>levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords] && attackerMoves[attackerMoves.length-1].isAttacking),
-			"attackerCaught" : ((Math.random*255>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random*255>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender)
+			"attackSuccess" : (Math.random()*255>levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value && attackerMoves[attackerMoves.length-1].isAttacking),
+			"attackerCaught" : ((Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255>levelLayout.nodes[myCoords].attackerCaughtWithoutDefender)
 		}
 	};
 	connection.send(resolution);
@@ -70,7 +73,32 @@ function resolveConflict() {
 			levelLayout.edges[index] = levelLayout.edges[index].indexOf(myCoords*1)<0 ? levelLayout.edges[index] : levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
 		}
 	}
+	if(resolution.results.attackerCaught) {
+		gameOver("You caught the attacker!");
+	}
+	if(levelLayout.edges[myCoords].length==0) {
+		gameOver("You ran out of spaces to move to!");
+	}
 	defenderMoved=false;
 	attackerMoved=false;
 	document.getElementById("infoArea").innerText++;
+}
+
+function gameOver(reason) {
+	console.log("Game Over!");
+	var gameState = {
+		"defender" : defenderMoves,
+		"attacker" : attackerMoves,
+		"points" : score,
+		"endCondition" : reason
+	};
+	console.log(gameState);
+	if(playerType=="defender") {
+		$.post('/api/defender', gameState, function(data) {
+			window.location = window.location.origin+'/gameover.html#'+encodeURI(JSON.stringify(gameState));
+		});
+	}
+	else {
+		window.location = window.location.origin+'/gameover.html#'+encodeURI(JSON.stringify(gameState));
+	}
 }

@@ -49,12 +49,10 @@ function clickOnEmptyCell(cell) {
 	if(cell!=null && levelLayout.edges[myCoords].indexOf(cell.index*1)!=-1 && (((playerType=="attacker") && canMove) || ((playerType=="defender") && !defenderMoved)))
 	{
 		if(playerType=="defender") {
-			console.log("Defending a space");
 			//convert the coordinates into a single number which is the UID of the space
 			defendSpace(cell.index);
 		}
 		else {
-			console.log("Attacking a space");
 			attackSpace(cell.index, cell.isAttacking);
 		}
 		drawBoard();
@@ -79,12 +77,9 @@ function drawBoard() {
 		gDrawingContext.lineTo(curNode.position.x+2*curNode.value/Math.sqrt(3),curNode.position.y+curNode.value);
 	}
 	gDrawingContext.closePath();
-	console.log(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1));
 	if(playerType=="defender") {
-		console.log(128*(1+(levelLayout.edges[myCoords].indexOf(index*1)>0)));
 	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
 	    gDrawingContext.fillStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
-	  console.log(gDrawingContext.fillStyle);
 	}
 	else {
 	    gDrawingContext.strokeStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
@@ -101,7 +96,6 @@ function drawBoard() {
 	
     }
     if(!canMove || (defenderMoved&&!attackerMoved)) {
-	console.log(defenderMoved&&!attackerMoved);
 	gDrawingContext.fillText("Waiting on other player!", 20, 10);
 	}
 }
@@ -126,8 +120,6 @@ function initGame(canvasElement) {
     gDrawingContext = gCanvasElement.getContext("2d");
 
     $.getJSON('/js/level1.json', function (data) {
-	console.log("Got json!");
-	console.log(data);
 	levelLayout=data;
 	newGame();
 	});
