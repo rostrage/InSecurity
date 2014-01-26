@@ -74,9 +74,9 @@ function drawBoard() {
 		gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
 	}
 	else {
-		gDrawingContext.moveTo(curNode.position.x,curNode.position.y);
-		gDrawingContext.lineTo(curNode.position.x+curNode.value,curNode.position.y);
-		gDrawingContext.lineTo(curNode.position.x+curNode.value/2,curNode.position.y+curNode.value/2);
+		gDrawingContext.moveTo(curNode.position.x-curNode.value/Math.sqrt(2),curNode.position.y+3*curNode.value/Math.sqrt(2));
+		gDrawingContext.lineTo(curNode.position.x,curNode.position.y+curNode.value);
+		gDrawingContext.lineTo(curNode.position.x+curNode.value/2,curNode.position.y+3*curNode.value/Math.sqrt(2));
 		gDrawingContext.lineTo(curNode.position.x, curNode.position.y);
 	}
 	gDrawingContext.closePath();
