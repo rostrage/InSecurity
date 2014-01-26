@@ -16,6 +16,13 @@
 }
 
 #Games {
-text-align: center;
+  text-align: center;
 
+}
+
+#gameArea {
+  border:1px solid #000000;
+  width: 1px;
+  height: 1px;
+  display: none;
 }
