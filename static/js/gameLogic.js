@@ -86,7 +86,9 @@ function drawBoard() {
 	    gDrawingContext.fillStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
 	}
 	    gDrawingContext.stroke();
-	gDrawingContext.fill();
+	if(!curNode.isDisabled) {
+		gDrawingContext.fill();
+	}
 	if(playerType=="attacker") {
 		gDrawingContext.beginPath();
 		gDrawingContext.moveTo(curNode.position.x,curNode.position.y+curNode.value);
