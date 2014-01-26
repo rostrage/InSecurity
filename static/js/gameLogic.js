@@ -87,12 +87,14 @@ function drawBoard() {
 	}
 	    gDrawingContext.stroke();
 	gDrawingContext.fill();
-	gDrawingContext.beginPath();
-	gDrawingContext.moveTo(curNode.position.x,curNode.position.y+curNode.value);
-	gDrawingContext.lineTo(curNode.position.x,curNode.position.y-curNode.value);
-	gDrawingContext.closePath();
-	gDrawingContext.strokeStyle="#FFF";
-	gDrawingContext.stroke();
+	if(playerType=="attacker") {
+		gDrawingContext.beginPath();
+		gDrawingContext.moveTo(curNode.position.x,curNode.position.y+curNode.value);
+		gDrawingContext.lineTo(curNode.position.x,curNode.position.y-curNode.value);
+		gDrawingContext.closePath();
+		gDrawingContext.strokeStyle="#FFF";
+		gDrawingContext.stroke();
+	}
 	
     }
     if(!canMove || (defenderMoved&&!attackerMoved)) {
