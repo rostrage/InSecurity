@@ -37,9 +37,7 @@ function startGameLogic() {
 				attackerMoves = data.attackerMoves;
 				defenderMoves = data.defenderMoves;
 				if(attackerMoves[attackerMoves.length-1].isAttacking) {
-					$('.top-left').notify({
-						'message' : { 'text' : "Your attack failed!" }
-					});
+					$.notify("Attack Failed");
 				}
 				document.getElementById("infoArea").innerText++;
 				canMove=true;

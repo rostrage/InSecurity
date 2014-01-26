@@ -58,10 +58,12 @@ function clickOnEmptyCell(cell) {
 		drawBoard();
 		return;
 	}
-	else if(cell!=null && levelLayoutLayout.edges[myCoords].indexOf(cell.index*1)!=-1) {
-		$('.top-left').notify({
-			'message' : { 'text' : 'You are waiting on the other player.' } 
-		}).show();
+	else if(levelLayout.edges[myCoords].indexOf(cell.index*1)==-1) {
+		$.notify("You can't go there!");
+	}
+	else if(cell!=null) {
+		console.log("Notifying!");
+		$.notify('You are waiting on the other player!');
 	}
 }
 
