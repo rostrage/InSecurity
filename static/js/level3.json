@@ -9,7 +9,7 @@
       },
       "attackerSuccessChance" : 114,
       "attackerCaughtWithDefender" : 140,
-      "attackerCaughtWithoutDefender" : 51,
+      "attackerCaughtWithoutDefender" : 15,
       "value" : 25
     },
     {
@@ -20,7 +20,7 @@
       },
       "attackerSuccessChance" : 114,
       "attackerCaughtWithDefender" : 140,
-      "attackerCaughtWithoutDefender" : 51,
+      "attackerCaughtWithoutDefender" : 15,
       "value" : 25
     },
     {
@@ -31,7 +31,7 @@
       },
       "attackerSuccessChance" : 38,
       "attackerCaughtWithDefender" : 216,
-      "attackerCaughtWithoutDefender" : 76,
+      "attackerCaughtWithoutDefender" : 25,
       "value" : 35
     },
     {
@@ -42,7 +42,7 @@
       },
       "attackerSuccessChance" : 153,
       "attackerCaughtWithDefender" : 102,
-      "attackerCaughtWithoutDefender" : 38,
+      "attackerCaughtWithoutDefender" : 10,
       "value" : 20
     },
     {
@@ -53,7 +53,7 @@
       },
       "attackerSuccessChance" : 191,
       "attackerCaughtWithDefender" : 64,
-      "attackerCaughtWithoutDefender" : 25,
+      "attackerCaughtWithoutDefender" : 5,
       "value" : 15
     },
     {
@@ -64,7 +64,7 @@
       },
       "attackerSuccessChance" : 153,
       "attackerCaughtWithDefender" : 102,
-      "attackerCaughtWithoutDefender" : 38,
+      "attackerCaughtWithoutDefender" : 10,
       "value" : 20
     },
     {
@@ -75,7 +75,7 @@
       },
       "attackerSuccessChance" : 76,
       "attackerCaughtWithDefender" : 178,
-      "attackerCaughtWithoutDefender" : 63,
+      "attackerCaughtWithoutDefender" : 20,
       "value" : 30
     },
     {
@@ -86,7 +86,7 @@
       },
       "attackerSuccessChance" : 76,
       "attackerCaughtWithDefender" : 178,
-      "attackerCaughtWithoutDefender" : 63,
+      "attackerCaughtWithoutDefender" : 20,
       "value" : 30
     },
     {
@@ -97,7 +97,7 @@
       },
       "attackerSuccessChance" : 191,
       "attackerCaughtWithDefender" : 64,
-      "attackerCaughtWithoutDefender" : 25,
+      "attackerCaughtWithoutDefender" : 5,
       "value" : 15
     },
     {
@@ -108,7 +108,7 @@
       },
       "attackerSuccessChance" : 38,
       "attackerCaughtWithDefender" : 216,
-      "attackerCaughtWithoutDefender" : 76,
+      "attackerCaughtWithoutDefender" : 25,
       "value" : 35
     }
   ],
