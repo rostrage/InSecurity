@@ -13,6 +13,9 @@ function startGameLogic() {
 	document.getElementById("infoArea").innerText=0;
 	connection.on('open', function() {
 		connection.on('data', function(data) {
+			if(data=="gameover") {
+				gameOver("Defender ran out of spaces to move to!");
+			}
 			if(playerType=="attacker") {
 				score = data.score;
 				if(data.results.attackSuccess) {
@@ -93,6 +96,10 @@ function resolveConflict() {
 	}
 	resolution.score=score;
 	connection.send(resolution);
+	if(levelLayout.edges[myCoords].length==0) {
+		connection.send("gameover");
+		gameOver("You ran out of spaces to move to!");
+	}
 	if(resolution.results.attackerCaught && !isOnSameSpot) {
 		gameOver("The attacker was exposed!");
 	}
