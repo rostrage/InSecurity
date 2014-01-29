@@ -10,7 +10,7 @@ var defenderMoves = [];
 var attackerMoves = [];
 var score = 0;
 function startGameLogic() {
-	document.getElementById("infoArea").innerText=0;
+	document.getElementById("infoArea").innerHTML=0;
 	connection.on('open', function() {
 		connection.on('data', function(data) {
 			if(data=="gameover") {
@@ -42,7 +42,7 @@ function startGameLogic() {
 				if(attackerMoves[attackerMoves.length-1].isAttacking) {
 					$.notify("Attack Failed");
 				}
-				document.getElementById("infoArea").innerText++;
+				document.getElementById("infoArea").innerHTML++;
 				canMove=true;
 			}
 			else {
@@ -111,7 +111,7 @@ function resolveConflict() {
 	}
 	defenderMoved=false;
 	attackerMoved=false;
-	document.getElementById("infoArea").innerText++;
+	document.getElementById("infoArea").innerHTML++;
 }
 
 function gameOver(reason) {
