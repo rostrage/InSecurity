@@ -21,7 +21,7 @@ function startGameLogic() {
 				if(data.results.attackSuccess) {
 					//remove all links to a destroyed node
 					for(var index in levelLayout.edges) {
-						if(levelLayout.edges[index].indexOf(myCoords*1)<0) {
+						if(levelLayout.edges[index].indexOf(myCoords*1)>-1) {
 							levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
 						}
 					}
