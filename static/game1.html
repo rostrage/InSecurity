@@ -8,6 +8,11 @@
     <!-- Bootstrap -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/site.css" rel="stylesheet" />
+    <style type='text/css'>
+    .playerSelect { width: 92px; height: 92px; }
+    #player1 .playerSelect { background: red; }
+    #player2 .playerSelect { background: black; }
+    </style>
   </head>
   <body>
     <body class="home">
@@ -24,10 +29,10 @@
           <div align="center">
             <div id="infoArea">
               <div id="player1" onClick="chooseDefender()">
-                <p>Defender</p><img src="img/TriangleDefender.png" />
+                <p>Defender</p><div class='playerSelect'></div>
               </div>
               <div id="player2"  onClick="chooseAttacker()">
-                <p>Attacker</p><img src="img/TriangleAttacker.png" />
+                <p>Attacker</p><div class='playerSelect'></div>
               </div>
             </div>
             <div id="playerInfo"></div>
