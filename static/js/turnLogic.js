@@ -20,9 +20,11 @@ function startGameLogic() {
 				score = data.score;
 				if(data.results.attackSuccess) {
 					//remove all links to a destroyed node
-					for(var index in levelLayout.edges) {
-						if(levelLayout.edges[index].indexOf(myCoords*1)>-1) {
-							levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+					if(levelLayout.nodes[myCoords].isDestructible) {
+						for(var index in levelLayout.edges) {
+							if(levelLayout.edges[index].indexOf(myCoords*1)>-1) {
+								levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+							}
 						}
 					}
 					levelLayout.nodes[myCoords*1].isDisabled=true;
@@ -59,6 +61,7 @@ function startGameLogic() {
 
 function attackSpace(coords, isAttacking) {
 	myCoords=coords;
+	if(levelLayout.nodes[myCoords].isDisabled) isAttacking = false;
 	connection.send({"coords" : coords, "isAttacking" : isAttacking});
 	canMove=false;
 }
@@ -87,9 +90,11 @@ function resolveConflict() {
 	if(resolution.results.attackSuccess) {
 		score+=levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value;
 		//remove all links to a destroyed node
-		for(var index in levelLayout.edges) {
-			if(levelLayout.edges[index].indexOf(myCoords*1)<0) {
-				levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+		if(levelLayout.nodes[myCoords].isDestructible) {
+			for(var index in levelLayout.edges) {
+				if(levelLayout.edges[index].indexOf(myCoords*1)>-1) {
+					levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
+				}
 			}
 		}
 		levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].isDisabled=true;
