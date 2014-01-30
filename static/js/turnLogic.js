@@ -77,7 +77,6 @@ function defendSpace(coords) {
 }
 
 function resolveConflict() {
-	var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1].coords);
 	var resolution = calculateResolution();
 	if(resolution.results.attackSuccess) {
 		score+=levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value;
@@ -117,6 +116,7 @@ function unlinkNode(coords) {
 }
 
 function calculateResolution() {
+  var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1].coords);
   var resolution = {
     "attackerMoves" : attackerMoves,
     "defenderMoves" : defenderMoves,

@@ -125,7 +125,6 @@ function drawUnoccupiedNode(curNode) {
 
 function colorNode(curNode, index) {
 	if(playerType=="defender") {
-	    console.log("is defender");
 	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
 	    gDrawingContext.fillStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
 	}
