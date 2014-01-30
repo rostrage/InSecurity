@@ -70,29 +70,22 @@ function clickOnEmptyCell(cell) {
 function drawBoard() {
 	
     gDrawingContext.clearRect(0, 0, kPixelWidth, kPixelHeight);
+    drawNodes();
+    drawEdges();
+}
 
-    
+function drawNodes() {
     for (var index in levelLayout.nodes) {
 	var curNode = levelLayout.nodes[index];
 	gDrawingContext.beginPath();
 	if(index!=myCoords) {
-		gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
+		drawUnoocupiedNode();
 	}
 	else {
-		gDrawingContext.moveTo(curNode.position.x,curNode.position.y-curNode.value);
-		gDrawingContext.lineTo(curNode.position.x-2*curNode.value/Math.sqrt(3),curNode.position.y+curNode.value);
-		gDrawingContext.lineTo(curNode.position.x+2*curNode.value/Math.sqrt(3),curNode.position.y+curNode.value);
+		drawOccupiedNode();
 	}
 	gDrawingContext.closePath();
-	if(playerType=="defender") {
-	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
-	    gDrawingContext.fillStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
-	}
-	else {
-	    gDrawingContext.strokeStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
-	    gDrawingContext.fillStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
-	}
-	    gDrawingContext.stroke();
+	gDrawingContext.stroke();
 	if(!curNode.isDisabled) {
 		gDrawingContext.fill();
 	}
@@ -105,8 +98,10 @@ function drawBoard() {
 		gDrawingContext.stroke();
 	}
     }
+}
 
-	gDrawingContext.strokeStyle="#000";
+function drawEdges() {
+    gDrawingContext.strokeStyle="#000";
     for (var ii in levelLayout.edges) {
     	for (var jj in levelLayout.edges[ii]) {
 		gDrawingContext.beginPath();
@@ -118,6 +113,26 @@ function drawBoard() {
     }
 }
 
+function drawOccupiedNode() {
+		gDrawingContext.moveTo(curNode.position.x,curNode.position.y-curNode.value);
+		gDrawingContext.lineTo(curNode.position.x-2*curNode.value/Math.sqrt(3),curNode.position.y+curNode.value);
+		gDrawingContext.lineTo(curNode.position.x+2*curNode.value/Math.sqrt(3),curNode.position.y+curNode.value);
+}
+
+function drawUnoccupiedNode() {
+		gDrawingContext.arc(curNode.position.x,curNode.position.y, curNode.value, 0, Math.PI*2, false);
+}
+
+function colorNode() {
+	if(playerType=="defender") {
+	    gDrawingContext.strokeStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
+	    gDrawingContext.fillStyle = "rgba("+curNode.attackerCaughtWithDefender+",0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
+	}
+	else {
+	    gDrawingContext.strokeStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
+	    gDrawingContext.fillStyle = "rgba(0,0,0,"+.5*(1+(levelLayout.edges[myCoords].indexOf(index*1)>-1))+")";
+	}
+}
 function newGame() {
     
     drawBoard();

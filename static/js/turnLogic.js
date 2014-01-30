@@ -17,19 +17,19 @@ function startGameLogic() {
 				gameOver("Defender ran out of spaces to move to!");
 			}
 			if(playerType=="attacker") {
+				attackerMoves = data.attackerMoves;
+				defenderMoves = data.defenderMoves;
 				score = data.score;
 				if(data.results.attackSuccess) {
 					//remove all links to a destroyed node
 					if(levelLayout.nodes[myCoords].isDestructible) {
-						for(var index in levelLayout.edges) {
-							if(levelLayout.edges[index].indexOf(myCoords*1)>-1) {
-								levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
-							}
-						}
+						//multiply by 1 to cast to an int
+						unlinkNode(attackerMoves[attackerMoves.length-1].coords*1);
 					}
 					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
 				var isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1]);
+				//check various end conditions
 				if(data.results.attackerCaught && !isOnSameSpot) {
 					gameOver("You were exposed!");
 				}
@@ -39,11 +39,10 @@ function startGameLogic() {
 				if(levelLayout.edges[myCoords].length==0) {
 					gameOver("You ran out of spaces to move to!");
 				}
-				attackerMoves = data.attackerMoves;
-				defenderMoves = data.defenderMoves;
 				if(attackerMoves[attackerMoves.length-1].isAttacking) {
 					$.notify("Attack Failed");
 				}
+				//increment the turn counter
 				document.getElementById("infoArea").innerHTML++;
 				canMove=true;
 			}
@@ -79,23 +78,13 @@ function defendSpace(coords) {
 
 function resolveConflict() {
 	var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1].coords);
-	var resolution = {
-		"attackerMoves" : attackerMoves,
-		"defenderMoves" : defenderMoves,
-		"results" : {
-			"attackSuccess" : (Math.random()*255<levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].attackerSuccessChance && attackerMoves[attackerMoves.length-1].isAttacking),
-			"attackerCaught" : ((Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithoutDefender &&attackerMoves[attackerMoves.length-1].isAttacking)
-		}
-	};
+	var resolution = calculateResolution();
 	if(resolution.results.attackSuccess) {
 		score+=levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value;
 		//remove all links to a destroyed node
-		if(levelLayout.nodes[myCoords].isDestructible) {
-			for(var index in levelLayout.edges) {
-				if(levelLayout.edges[index].indexOf(myCoords*1)>-1) {
-					levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(myCoords*1),1);
-				}
-			}
+		if(levelLayout.nodes[attackerMoves[attackerMoves.length-1]].isDestructible) {
+			//multiply by 1 to cast to an int
+			unlinkNode(attackerMoves[attackerMoves.length-1].coords*1);
 		}
 		levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].isDisabled=true;
 	}
@@ -119,6 +108,26 @@ function resolveConflict() {
 	document.getElementById("infoArea").innerHTML++;
 }
 
+function unlinkNode(coords) {
+  for(var index in levelLayout.edges) {
+    if(levelLayout.edges[index].indexOf(coords)>-1) {
+      levelLayout.edges[index].splice(levelLayout.edges[index].indexOf(coords),1);
+    }
+  }
+}
+
+function calculateResolution() {
+  var resolution = {
+    "attackerMoves" : attackerMoves,
+    "defenderMoves" : defenderMoves,
+    "results" : {
+    "attackSuccess" : (Math.random()*255<levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].attackerSuccessChance && attackerMoves[attackerMoves.length-1].isAttacking),
+    "attackerCaught" : ((Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithDefender) && isOnSameSpot) || (Math.random()*255<levelLayout.nodes[myCoords].attackerCaughtWithoutDefender &&attackerMoves[attackerMoves.length-1].isAttacking)
+    }
+  };
+  return resolution;
+}
+
 function gameOver(reason) {
 	console.log("Game Over!");
 	var gameState = {
@@ -138,3 +147,4 @@ function gameOver(reason) {
 		window.location = window.location.origin+'/gameover.html#'+encodeURI(JSON.stringify(gameState));
 	}
 }
+
