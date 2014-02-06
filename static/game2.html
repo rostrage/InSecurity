@@ -35,30 +35,13 @@
             <div id="area">
             <canvas id="gameArea">
             </canvas>
-            <canvas id="gameBackground" >
-            <script>
-              var canvasBack = document.getElementById("gameBackground"),
-              ctxB = canvasBack.getContext("2d");
-
-              canvasBack.width = 450;
-              canvasBack.height = 450;
-
-
-              var background = new Image();
-              background.src = "img/BG_Field.png";
-
-              // Make sure the image is loaded first otherwise nothing will draw.
-              background.onload = function(){
-                ctxB.drawImage(background,0,0);   
-              }
-            </script>
-            </canvas>
           </div>
             <a href="gamepicker.html"  class="btn btn-primary btn-lg play" role="button" >&lt;- Back</a>
           </div>
         </div>
       </div>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
   <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -66,6 +49,8 @@
 	<script type="text/javascript" src="/js/lobby.js"></script>
 	<script type="text/javascript" src="/js/turnLogic.js"></script>
 	<script type="text/javascript" src="/js/gameLogic.js"></script>
+  <script type="text/javascript" src="/js/choosePlayer.js"></script>
+  <script type="text/javascript" src="/js/canvasBackground.js"></script>
 	<script type="text/javascript">
 	    $.getJSON('js/level2.json', function (data) {
 		levelLayout=data;

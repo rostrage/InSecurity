@@ -28,10 +28,10 @@
           <div id="Intro"></div>
           <div align="center">
             <div id="infoArea">
-              <div id="player1" onClick="chooseDefender()">
+              <div id="player1">
                 <p>Defender</p><div class='playerSelect'></div>
               </div>
-              <div id="player2"  onClick="chooseAttacker()">
+              <div id="player2">
                 <p>Attacker</p><div class='playerSelect'></div>
               </div>
             </div>
@@ -44,6 +44,7 @@
         </div>
       </div>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/bower_components/jquery/jquery.js"></script>
   <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -51,7 +52,9 @@
 	<script type="text/javascript" src="/js/lobby.js"></script>
 	<script type="text/javascript" src="/js/turnLogic.js"></script>
 	<script type="text/javascript" src="/js/gameLogic.js"></script>
-	<script type="text/javascript">
+  <script type="text/javascript" src="/js/choosePlayer.js"></script>	
+  <script type="text/javascript" src="/js/canvasBackground.js"></script>
+  <script type="text/javascript">
 	    $.getJSON('/js/level1.json', function (data) {
 		levelLayout=data;
 		});
