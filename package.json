@@ -10,7 +10,9 @@
     "socket.io": "~0.9.16"
   },
   "devDependencies": {
-    "mocha" :  "*"
+    "mocha" :  "*",
+    "grunt": "~0.4.2",
+    "grunt-mocha": "~0.4.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
