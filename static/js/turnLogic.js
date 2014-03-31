@@ -1,4 +1,5 @@
 var turn=0;
+var isOnSameSpot;
 var attackerMoved=false;
 var defenderMoved=false;
 var canMove=true;
@@ -28,7 +29,7 @@ function startGameLogic() {
 					}
 					levelLayout.nodes[myCoords*1].isDisabled=true;
 				}
-				var isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1]);
+				isOnSameSpot = (myCoords == defenderMoves[defenderMoves.length-1]);
 				//check various end conditions
 				if(data.results.attackerCaught && !isOnSameSpot) {
 					gameOver("You were exposed!");
@@ -81,7 +82,7 @@ function resolveConflict() {
 	if(resolution.results.attackSuccess) {
 		score+=levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].value;
 		//remove all links to a destroyed node
-		if(levelLayout.nodes[attackerMoves[attackerMoves.length-1]].isDestructible) {
+		if(levelLayout.nodes[attackerMoves[attackerMoves.length-1].coords].isDestructible) {
 			//multiply by 1 to cast to an int
 			unlinkNode(attackerMoves[attackerMoves.length-1].coords*1);
 		}
@@ -116,7 +117,7 @@ function unlinkNode(coords) {
 }
 
 function calculateResolution() {
-  var isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1].coords);
+  isOnSameSpot = (myCoords == attackerMoves[attackerMoves.length-1].coords);
   var resolution = {
     "attackerMoves" : attackerMoves,
     "defenderMoves" : defenderMoves,
