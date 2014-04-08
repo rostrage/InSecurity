@@ -57,6 +57,9 @@ function startGameLogic() {
 			drawBoard();
 		});
 	});
+	connection.on('close', function() {
+		$.notify("The other player has disconnected from the game.");
+	});
 };
 
 function attackSpace(coords, isAttacking) {
